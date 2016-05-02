@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 
-
 public class Main extends Application
 {
 	@Override
@@ -18,7 +17,7 @@ public class Main extends Application
 			loader.setLocation(Main.class.getResource("MainWindow.fxml"));
 			AnchorPane root = loader.load();
 			Scene scene = new Scene(root);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setMinHeight(600);
 			primaryStage.setMinWidth(800);
 			primaryStage.setTitle("Mensch ärgere dich nicht");
@@ -30,11 +29,9 @@ public class Main extends Application
 			e.printStackTrace();
 		}
 	}
+	
 	public static void main(String[] args)
 	{
 		launch(args);
-		//int x;
-		//x = Wuerfel.wuerfeln();
-		//System.out.println(x);
 	}
 }
