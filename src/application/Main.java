@@ -1,5 +1,7 @@
 package application;
 	
+
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -18,9 +20,10 @@ public class Main extends Application
 			AnchorPane root = loader.load();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setMinHeight(600);
-			primaryStage.setMinWidth(800);
-			primaryStage.setTitle("Mensch ärgere dich nicht");
+			//primaryStage.setMinHeight(600);
+			//primaryStage.setMinWidth(800);
+			primaryStage.setTitle("Mensch Aergere dich nicht");
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		}
