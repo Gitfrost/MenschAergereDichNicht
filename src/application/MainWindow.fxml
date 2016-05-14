@@ -79,7 +79,7 @@
                   </AnchorPane>
                   <VBox fx:id="VBox" prefHeight="575.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="AusgabeTextArea" cache="true" editable="false" prefHeight="300.0" prefWidth="200.0" text="Klicken Sie 'Test', um 3&#10;Felder vor zurücken." />
+                        <TextArea fx:id="AusgabeTextArea" cache="true" editable="false" prefHeight="300.0" prefWidth="200.0" text="Klicken Sie 'Test', um 3&#10;Felder vor zurücken." visible="false" />
                         <Button fx:id="testButton" mnemonicParsing="false" onAction="#handleTestButton" text="Test">
                            <VBox.margin>
                               <Insets bottom="50.0" left="50.0" right="50.0" top="20.0" />

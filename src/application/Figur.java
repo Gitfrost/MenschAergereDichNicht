@@ -2,15 +2,12 @@ package application;
 
 public class Figur
 {
-	//private String figurFarbe;
-	//private int figurID;
 	private int figurPosition;
 	private int alteFigurPosition;
 	
 	public Figur()
 	{
-		//figurFarbe = "blau";
-		//figurID = 1;
+		
 	}
 	
 	public int getFigurPosition()
@@ -36,7 +33,7 @@ public class Figur
 	
 	public void neuAufFeldSetzen()
 	{
-		figurPosition = 2;
+		figurPosition = 1;
 		alteFigurPosition = 0;
 	}
 }

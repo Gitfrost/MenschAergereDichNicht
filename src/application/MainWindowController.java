@@ -16,23 +16,30 @@ public class MainWindowController
 	@FXML private Circle f5;
 	
 	private Circle[] felder = new Circle[5];
-
+	
 	/*
 	 * neues Spiel wird gestartet, Felder und Figuren werden initialisiert
 	 */
 	@FXML public void handleNeuesSpielMenu()
 	{
+		/*
+		 * Initialisierung des Arrays wird mit Spielfeldelementen
+		 */
 		felder[0] = f1; felder[1] = f2; felder[2] = f3;felder[3] = f4; felder[4] = f5;
-		
-		for (int i=0; i<felder.length; i++)
+		/*
+		 * zurÃ¼cksetzen aller Felder auf nicht sichtbaren Zustand
+		 */
+		for (int i = 0; i<felder.length; i++)
 		{
 			felder[i].setVisible(false);
 		}
-		
+		/*
+		 * Erzeugung und Initialisierung neuer Objekte
+		 */
 		blau1 = new Figur();
 		blau1.neuAufFeldSetzen();
-		System.out.println(blau1.getFigurPosition());
 		aktualisiereSpielfeld();
+		System.out.println(blau1.getFigurPosition());
 	}
 	
 	@FXML public void handleBeendenMenu()
@@ -47,7 +54,7 @@ public class MainWindowController
 	
 	@FXML public void handleTestButton()
 	{
-		blau1.Setzen(3);
+		blau1.Setzen(4);
 		System.out.println(blau1.getFigurPosition());
 		aktualisiereSpielfeld();
 	}
@@ -62,27 +69,40 @@ public class MainWindowController
 		
 		//blaueFelder[blau1.getAlteFigurPosition() - 1] = 0;
 		/*
-		 * Array der blauen felder wird auf Aenderungen seit dem letzten Zug geprüft
+		 * Array der blauen felder wird auf Aenderungen seit dem letzten Zug geprueft
 		 */
 		//if (blaueFelder.equals(blaueFelderVorherigeRunde) != true)
 		//{
 			if (blau1.getAlteFigurPosition() != blau1.getFigurPosition());
 			/*
-			 * GUI Circle Elemente werden für blau1 aktualisiert
+			 * GUI Circle Elemente werden fuer blau1 aktualisiert
 			 */
 			{
 				Thread animationUpdate = new Thread(new Runnable()
 				{
 					public void run()
 					{
-						for (int i = blau1.getAlteFigurPosition(); i < blau1.getFigurPosition(); i++)
+						if (blau1.getAlteFigurPosition() != 0)
 						{
+							int p = blau1.getAlteFigurPosition() - 1;
+							for (int i = blau1.getAlteFigurPosition(); i < blau1.getFigurPosition(); i++)
+							{
+								felder[p].setVisible(false);
+								felder[p + 1].setVisible(true);
+								p++;
+								try
+								{
+									Thread.sleep(200);
+								}
+								catch (InterruptedException e)
+								{
+									e.printStackTrace();
+								}
+							}
 							
 						}
-						
-						if (blau1.getAlteFigurPosition() != 0)
-						felder[blau1.getAlteFigurPosition() - 1].setVisible(false);
-						felder[blau1.getFigurPosition() - 1].setVisible(true);
+						else
+							felder[0].setVisible(true);
 					}
 				});
 				animationUpdate.start();
