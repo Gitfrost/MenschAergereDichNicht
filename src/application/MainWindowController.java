@@ -1,5 +1,6 @@
 package application;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.shape.Circle;
 
@@ -9,11 +10,7 @@ public class MainWindowController
 	//private int[] blaueFelder = {0,0,0,0,0};
 	//private int[] blaueFelderVorherigeRunde;
 	
-	@FXML private Circle f1;
-	@FXML private Circle f2;
-	@FXML private Circle f3;
-	@FXML private Circle f4;
-	@FXML private Circle f5;
+	@FXML private Circle f1, f2, f3, f4, f5;
 	
 	private Circle[] felder = new Circle[5];
 	
@@ -44,7 +41,7 @@ public class MainWindowController
 	
 	@FXML public void handleBeendenMenu()
 	{
-		
+		Platform.exit();
 	}
 	
 	@FXML public void handleAboutMenu()
@@ -92,7 +89,7 @@ public class MainWindowController
 								p++;
 								try
 								{
-									Thread.sleep(200);
+									Thread.sleep(250);
 								}
 								catch (InterruptedException e)
 								{

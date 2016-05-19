@@ -1,8 +1,8 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 #spielfeldAnchorPane{
-    /*-fx-background-image: url("http://wallpapers-best.com/uploads/posts/2015-09/25_white_abstract.jpg");*/
-    -fx-background-repeat: stretch;   
-    -fx-background-size: 600 575;
-    -fx-background-position: bottom;
-    /*-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); */
+	-fx-background-image: url("http://wallpapers-best.com/uploads/posts/2015-09/25_white_abstract.jpg");
+	-fx-background-repeat: stretch;
+	-fx-background-size: 600 600;
+	-fx-background-position: bottom;
+	/*-fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); */
 }

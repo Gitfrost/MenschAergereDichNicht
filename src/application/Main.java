@@ -22,7 +22,7 @@ public class Main extends Application
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			//primaryStage.setMinHeight(600);
 			//primaryStage.setMinWidth(800);
-			primaryStage.setTitle("Mensch Aergere dich nicht");
+			primaryStage.setTitle("Mensch aergere dich nicht");
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();
