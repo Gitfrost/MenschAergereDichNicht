@@ -5,12 +5,12 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainWindowController">
    <children>
@@ -31,96 +31,549 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <HBox prefHeight="600.0" prefWidth="800.0">
+            <HBox fx:id="mainHBox" prefHeight="600.0" prefWidth="800.0" spacing="10.0">
                <children>
                   <AnchorPane fx:id="spielfeldAnchorPane" prefHeight="600.0" prefWidth="600.0" stylesheets="@application.css">
                      <children>
-                        <HBox layoutX="370.0" layoutY="318.0" prefHeight="0.0" prefWidth="0.0" spacing="8.0">
+                        <VBox layoutX="530.0" layoutY="230.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
                            <children>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fx:id="f5" fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f39" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                  </children>
                               </StackPane>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fx:id="f4" fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f40" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                  </children>
                               </StackPane>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fx:id="f3" fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-                                 </children>
-                              </StackPane>
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
-                                 <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fx:id="f2" fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </HBox>
-                        <VBox layoutX="546.0" layoutY="230.0" prefHeight="0.0" prefWidth="0.0" spacing="8.0">
-                           <children>
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
-                                 <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-                                 </children>
-                              </StackPane>
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
-                                 <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-                                 </children>
-                              </StackPane>
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
-                                 <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fx:id="f1" fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f1" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                  </children>
                               </StackPane>
                            </children>
                         </VBox>
-                        <HBox layoutX="370.0" layoutY="230.0" prefHeight="0.0" prefWidth="0.0" spacing="8.0">
+                        <HBox layoutX="330.0" layoutY="330.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
                            <children>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f5" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                  </children>
                               </StackPane>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f4" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                  </children>
                               </StackPane>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f3" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                  </children>
                               </StackPane>
                               <StackPane prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <Circle fill="#348ee300" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                                    <Circle fill="#2c7dff" radius="9.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f2" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                  </children>
                               </StackPane>
                            </children>
                         </HBox>
+                        <VBox layoutX="330.0" layoutY="381.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f6" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f7" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f8" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <HBox layoutX="230.0" layoutY="531.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f11" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f10" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f9" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <VBox layoutX="230.0" layoutY="381.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f14" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f13" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f12" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <HBox layoutX="80.0" layoutY="330.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f18" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f17" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f16" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f15" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <VBox layoutX="30.0" layoutY="230.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f21" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f20" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f19" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <HBox layoutX="80.0" layoutY="230.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f22" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f23" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f24" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f25" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <VBox layoutX="230.0" layoutY="80.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f28" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f27" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f26" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <HBox layoutX="230.0" layoutY="31.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f29" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f30" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f31" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <VBox layoutX="330.0" layoutY="80.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f32" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f33" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fx:id="f34" fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f34" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <HBox layoutX="330.0" layoutY="230.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f35" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f36" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f37" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                    <Circle fx:id="f38" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <VBox layoutX="480.0" layoutY="480.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_b2" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_b1" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_b4" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_b3" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="30.0" layoutY="480.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_r4" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_r2" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_r3" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_r1" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="30.0" layoutY="30.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fx:id="base_gr3" fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_gr4" fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_gr1" fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_gr2" fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="480.0" layoutY="30.0" prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                           <children>
+                              <HBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_ge1" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_ge3" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="0.0" prefWidth="0.0" spacing="10.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_ge2" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_ge4" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox layoutX="330.0" layoutY="280.0" spacing="10.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cae0ff" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cae0ff" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cae0ff" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cae0ff" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="80.0" layoutY="280.0" spacing="10.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfffca" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                    <Circle fill="#71d032" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfffca" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfffca" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dfffca" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <VBox layoutX="280.0" layoutY="80.0" spacing="10.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffccc" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffccc" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffccc" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffccc" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="280.0" layoutY="330.0" spacing="10.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcbcb" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcbcb" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcbcb" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcbcb" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </AnchorPane>
                   <VBox fx:id="VBox" prefHeight="600.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="AusgabeTextArea" cache="true" editable="false" prefHeight="300.0" prefWidth="200.0" text="Klicken Sie 'Test', um 3&#10;Felder vor zurücken." visible="false" />
                         <Button fx:id="testButton" mnemonicParsing="false" onAction="#handleTestButton" text="Test">
                            <VBox.margin>
-                              <Insets bottom="50.0" left="50.0" right="50.0" top="20.0" />
+                              <Insets bottom="20.0" left="75.0" right="20.0" top="25.0" />
                            </VBox.margin>
                         </Button>
                      </children>

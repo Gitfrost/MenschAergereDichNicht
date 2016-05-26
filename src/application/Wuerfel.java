@@ -10,7 +10,7 @@ public class Wuerfel
 		return augenzahl;
 	}
 	
-	public boolean sechsGewürfelt()
+	public boolean sechsGewuerfelt()
 	{
 		if (augenzahl == 6)
 			return true;
