@@ -2,19 +2,28 @@ package application;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-
+/*
+ * Hauptklasse fÃ¼r das Spielfeld und alle dazugehÃ¶rigen Elemente
+ * Controller fuer die grafische OberflÃ¤che
+ */
 public class MainWindowController
 {
-	private Figur blau1, blau2, blau3, blau4, rot1, rot2, rot3, rot4, grün1, grün2, grün3, grün4, gelb1, gelb2, gelb3, gelb4;
-	//private int[] blaueFelder = {0,0,0,0,0};
-	//private int[] blaueFelderVorherigeRunde;
-	
+	/*
+	 * 16 am Spiel beteiligte Figuren
+	 */
+	private Figur blau1, blau2, blau3, blau4, rot1, rot2, rot3, rot4, gruen1, gruen2, gruen3, gruen4, gelb1, gelb2, gelb3, gelb4;
+	/*
+	 * Bezeichnungen der einzelnen Felder (JavaFX Circles)
+	 */
 	@FXML private Circle f1, f2, f3, f4, f5, f6, f7, f8, f9, f10,
-						f11, f12, f13, f14, f15, f16, f17, f18, f19, f20,
-						f21, f22, f23, f24, f25, f26, f27, f28, f29, f30,
-						f31, f32, f33, f34, f35, f36, f37, f38, f39, f40;
-	
+						 f11, f12, f13, f14, f15, f16, f17, f18, f19, f20,
+						 f21, f22, f23, f24, f25, f26, f27, f28, f29, f30,
+						 f31, f32, f33, f34, f35, f36, f37, f38, f39, f40;
+	/*
+	 * Anlegen eines Arrays fuer die Spielfelder
+	 */
 	private Circle[] felder = new Circle[40];
 	
 	/*
@@ -23,7 +32,7 @@ public class MainWindowController
 	@FXML public void handleNeuesSpielMenu()
 	{
 		/*
-		 * Initialisierung des Arrays wird mit Spielfeldelementen
+		 * Initialisierung des Arrays mit Spielfeldelementen
 		 */
 		felder[0] = f1; felder[1] = f2; felder[2] = f3; felder[3] = f4; felder[4] = f5; felder[5] = f6; felder[6] = f7; felder[7] = f8; felder[8] = f9; felder [9] = f10;
 		felder[10] = f11; felder[11] = f12; felder[12] = f13; felder[13] = f14; felder[14] = f15; felder[15] = f16; felder[16] = f17; felder[17] = f18; felder[18] = f19; felder[19] = f20;
@@ -36,16 +45,17 @@ public class MainWindowController
 		{
 			felder[i].setVisible(false);
 		}
-		
 		/*
-		 * Erzeugung und Initialisierung neuer Objekte
+		 * Anlegen der Figuren
 		 */
-		blau1 = new Figur();
-		blau2 = new Figur();
-		blau3 = new Figur();
-		
-		blau1.neuAufFeldSetzen();
-		aktualisiereSpielfeld();
+		blau1 = new Figur(1); blau2 = new Figur(1); blau3 = new Figur(1); blau4 = new Figur(1);
+		rot1 = new Figur(2); rot2 = new Figur(2); rot3 = new Figur(2); rot4 = new Figur(2);
+		gruen1 = new Figur(3); gruen2 = new Figur(3); gruen3 = new Figur(3); gruen4 = new Figur(3); 
+		gelb1 = new Figur(4); gelb2 = new Figur(4); gelb3 = new Figur(4); gelb4 = new Figur(4);
+		/*
+		 * GUI Update fuer die Figur blau1
+		 */
+		//aktualisiereGUI(blau1);
 		System.out.println(blau1.getFigurPosition());
 	}
 	
@@ -63,60 +73,86 @@ public class MainWindowController
 	{
 		blau1.Setzen(4);
 		System.out.println(blau1.getFigurPosition());
-		aktualisiereSpielfeld();
+		aktualisiereGUI(blau1);
+	}
+	@FXML public void handleFigurButton()
+	{
+		blau1.neuAufFeldSetzen();
+		System.out.println(blau1.getFigurPosition());
+		aktualisiereGUI(blau1);
 	}
 	
-	public void aktualisiereSpielfeld()
+	/*
+	 * aktualisiert Spielfeld fÃ¼r angegebene Figur
+	 */
+	public void aktualisiereGUI(Figur f)
 	{
 		/*
-		 * aktuellen Werte werden in das Array der blauen Felder geladen
+		 * testen auf eventuelle Aenderungen 
 		 */
-		//blaueFelder[blau1.getFigurPosition() - 1] = 1;
-		
-		
-		//blaueFelder[blau1.getAlteFigurPosition() - 1] = 0;
+		if (f.getAlteFigurPosition() != f.getFigurPosition());
 		/*
-		 * Array der blauen felder wird auf Aenderungen seit dem letzten Zug geprueft
+		 * aktualisieren der GUI Circle Elemente fuer Figur f
 		 */
-		//if (blaueFelder.equals(blaueFelderVorherigeRunde) != true)
-		//{
-			if (blau1.getAlteFigurPosition() != blau1.getFigurPosition());
-			/*
-			 * GUI Circle Elemente werden fuer blau1 aktualisiert
-			 */
+		{
+			Thread animationUpdate = new Thread(new Runnable()
 			{
-				Thread animationUpdate = new Thread(new Runnable()
+				public void run()
 				{
-					public void run()
+					/*
+					 * testen,ob Figur f in die Basis zurÃ¼ckgesetzt wird (relative Position = 0)
+					 */
+					if (f.getFigurPosition() == 0)
 					{
-						if (blau1.getAlteFigurPosition() != 0)
-						{
-							int p = blau1.getAlteFigurPosition() - 1;
-							for (int i = blau1.getAlteFigurPosition(); i < blau1.getFigurPosition(); i++)
-							{
-								felder[p].setVisible(false);
-								felder[p + 1].setVisible(true);
-								p++;
-								try
-								{
-									Thread.sleep(250);
-								}
-								catch (InterruptedException e)
-								{
-									e.printStackTrace();
-								}
-							}
-							
-						}
-						else
-							felder[0].setVisible(true);
+						
 					}
-				});
-				animationUpdate.start();
-				
-				
-			}
-		//}
-		
+					/*
+					 * testen, ob Figur f aus der Basis auf das erste Feld gesetzt wird (relative Position = 1)
+					 */
+					if (f.getFigurPosition() == 1)
+					{
+						if (f.getFigurSpieler() == 1)
+						{
+							felder[0].setFill(Color.web("2c7dff"));
+							felder[0].setVisible(true);
+						}
+						if (f.getFigurSpieler() == 2)
+						{
+							felder[10].setFill(Color.web("ff4343"));
+							felder[10].setVisible(true);
+						}
+						if (f.getFigurSpieler() == 2)
+						{
+							felder[20].setFill(Color.web("ff4343"));
+							felder[20].setVisible(true);
+						}
+						if (f.getFigurSpieler() == 2)
+						{
+							felder[30].setFill(Color.web("83d04f"));
+							felder[30].setVisible(true);
+						}
+					}
+					else
+					{
+						int p = f.getAlteFigurPosition() - 1;
+						for (int i = f.getAlteFigurPosition(); i < f.getFigurPosition(); i++)
+						{
+							felder[p].setVisible(false);
+							felder[p + 1].setVisible(true);
+							p++;
+							try
+							{
+								Thread.sleep(250);
+							}
+							catch (InterruptedException e)
+							{
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+			});
+			animationUpdate.start();
+		}
 	}
 }

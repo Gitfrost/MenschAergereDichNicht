@@ -329,14 +329,14 @@
                                  <children>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#cae0ff" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_b2" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Circle fx:id="base_b1" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#cce1ff" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_b1" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                  </children>
@@ -345,13 +345,13 @@
                                  <children>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#cae0ff" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_b4" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#cae0ff" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_b3" fill="#2c7dff" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
@@ -365,13 +365,13 @@
                                  <children>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#ffcbcb" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_r4" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#ffcbcb" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_r2" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
@@ -381,14 +381,14 @@
                                  <children>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#ffcbcb" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_r3" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Circle fx:id="base_r1" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#ffcbcb" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_r1" fill="#ff4343" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                  </children>
@@ -401,13 +401,13 @@
                                  <children>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fx:id="base_gr3" fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_gr3" fill="#dfffca" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#dfffcae3" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_gr4" fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
@@ -417,13 +417,13 @@
                                  <children>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Circle fx:id="base_gr1" fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#dfffca" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_gr1" fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#dfffca" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_gr2" fill="#83d04f" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
@@ -437,13 +437,13 @@
                                  <children>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Circle fx:id="base_ge1" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#fffccf" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fx:id="base_ge1" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#fffccf" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_ge3" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
@@ -453,13 +453,13 @@
                                  <children>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#fffccf" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_ge2" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
                                     <StackPane prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <Circle fill="#348ee300" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#fffccf" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                                           <Circle fx:id="base_ge4" fill="#fff438" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                                        </children>
                                     </StackPane>
@@ -486,7 +486,7 @@
                               </StackPane>
                               <StackPane>
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cae0ff" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cce1ff" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
                                  </children>
                               </StackPane>
                            </children>
@@ -574,6 +574,11 @@
                         <Button fx:id="testButton" mnemonicParsing="false" onAction="#handleTestButton" text="Test">
                            <VBox.margin>
                               <Insets bottom="20.0" left="75.0" right="20.0" top="25.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="FigurButton1" mnemonicParsing="false" onAction="#handleFigurButton" text="Figur">
+                           <VBox.margin>
+                              <Insets left="73.0" />
                            </VBox.margin>
                         </Button>
                      </children>
