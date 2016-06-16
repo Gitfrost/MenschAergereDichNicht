@@ -20,8 +20,8 @@ public class Main extends Application
 			AnchorPane root = loader.load();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//primaryStage.setMinHeight(600);
-			//primaryStage.setMinWidth(800);
+			primaryStage.setMaxHeight(652);
+			primaryStage.setMaxWidth(800);
 			primaryStage.setTitle("Mensch aergere dich nicht");
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);

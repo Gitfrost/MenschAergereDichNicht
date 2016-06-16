@@ -11,18 +11,27 @@ public class Figur
 	 */
 	private int alteFigurPosition;
 	/*
-	 * Spieler der Figur (1 = blau, 2 = rot, 3 = grün, 4 = gelb)
+	 * Spieler der Figur (1 = blau, 2 = rot, 3 = gruen, 4 = gelb)
 	 */
 	private int figurSpieler;
-	
 	/*
-	 * Konstruktor fuer Figur mit Übergabe der Spielernummer
+	 * Nummer der Figur (1 bis 4)
 	 */
-	public Figur(int s)
+	private int figurNummer;
+	/*
+	 * Zustand der Figur (false = auf normalen Spielfeldern, true = auf Zielfeldern)
+	 */
+	private boolean inZielFeldern;
+	/*
+	 * Konstruktor fuer Figur mit Uebergabe der Spielernummer
+	 */
+	public Figur(int s, int n)
 	{
 		figurPosition = 0;
 		alteFigurPosition = 0;
 		figurSpieler = s;
+		figurNummer = n;
+		inZielFeldern = false;
 	}
 	
 	/*
@@ -54,6 +63,13 @@ public class Figur
 		return figurSpieler;
 	}
 	/*
+	 * get-Methode fuer Figurnummer
+	 */
+	public int getFigurNummer()
+	{
+		return figurNummer;
+	}
+	/*
 	 * Methode fuer logisches Setzen der Figur
 	 */
 	public void Setzen(int anzahlFelder)
@@ -62,11 +78,33 @@ public class Figur
 		figurPosition = figurPosition + anzahlFelder;
 	}
 	/*
+	 * get-Methode fuer Zustand der Figur
+	 */
+	public boolean getInZielFeldern()
+	{
+		return inZielFeldern;
+	}
+	/*
+	 * set Methode fuer Zustand der Figur
+	 */
+	public void setInZielFeldern(boolean z)
+	{
+		inZielFeldern = z;
+	}
+	/*
 	 * Methode fuer logisches Setzen von der Basis auf das Spielfeld
 	 */
 	public void neuAufFeldSetzen()
 	{
-		figurPosition = 1;
 		alteFigurPosition = 0;
+		figurPosition = 1;
+	}
+	/*
+	 * Methode fuer logisches Setzen vom Spielfeld in die Basis
+	 */
+	public void schlagen()
+	{
+		alteFigurPosition = figurPosition;
+		figurPosition = 0;
 	}
 }

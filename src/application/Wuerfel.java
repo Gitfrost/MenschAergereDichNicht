@@ -17,4 +17,9 @@ public class Wuerfel
 		else
 			return false;
 	}
+	
+	public int getAugenzahl()
+	{
+		return augenzahl;
+	}
 }
