@@ -9,7 +9,7 @@ import javafx.scene.shape.Circle;
 /*
  * Hauptklasse fuer das Spielfeld und alle dazugehoerigen Elemente
  * Controller fuer die grafische Oberflaeche
- * enthält Methode zur Aktualisierung des GUI
+ * enthaelt Methode zur Aktualisierung des GUI
  */
 public class MainWindowController
 {
@@ -32,7 +32,7 @@ public class MainWindowController
 	/*
 	 * Steuervariable, spielZuEnde == true ist Abbruchbedingung der Hauptschleife
 	 */
-	private boolean spielZuEnde;
+	//private boolean spielZuEnde;
 	/*
 	 * Anlegen der einzelnen Felder (JavaFX Circles)
 	 */
@@ -71,20 +71,57 @@ public class MainWindowController
 	/*
 	 * handler-Methoden fuer Felder
 	 */
-	@FXML public void handleF1()
-	{
-		geklickteFigurErmitteln(1);
-	}
-	@FXML public void handleF0()
-	{
-		geklickteFigurErmitteln(0);
-	}
+	@FXML public void handleF0() {geklickteFigurErmitteln(0);}
+	@FXML public void handleF1() {geklickteFigurErmitteln(1);}
+	@FXML public void handleF2() {geklickteFigurErmitteln(2);}
+	@FXML public void handleF3() {geklickteFigurErmitteln(3);}
+	@FXML public void handleF4() {geklickteFigurErmitteln(4);}
+	@FXML public void handleF5() {geklickteFigurErmitteln(5);}
+	@FXML public void handleF6() {geklickteFigurErmitteln(6);}
+	@FXML public void handleF7() {geklickteFigurErmitteln(7);}
+	@FXML public void handleF8() {geklickteFigurErmitteln(8);}
+	@FXML public void handleF9() {geklickteFigurErmitteln(9);}
+	@FXML public void handleF10() {geklickteFigurErmitteln(10);}
+	@FXML public void handleF11() {geklickteFigurErmitteln(11);}
+	@FXML public void handleF12() {geklickteFigurErmitteln(12);}
+	@FXML public void handleF13() {geklickteFigurErmitteln(13);}
+	@FXML public void handleF14() {geklickteFigurErmitteln(14);}
+	@FXML public void handleF15() {geklickteFigurErmitteln(15);}
+	@FXML public void handleF16() {geklickteFigurErmitteln(16);}
+	@FXML public void handleF17() {geklickteFigurErmitteln(17);}
+	@FXML public void handleF18() {geklickteFigurErmitteln(18);}
+	@FXML public void handleF19() {geklickteFigurErmitteln(19);}
+	@FXML public void handleF20() {geklickteFigurErmitteln(20);}
+	@FXML public void handleF21() {geklickteFigurErmitteln(21);}
+	@FXML public void handleF22() {geklickteFigurErmitteln(22);}
+	@FXML public void handleF23() {geklickteFigurErmitteln(23);}
+	@FXML public void handleF24() {geklickteFigurErmitteln(24);}
+	@FXML public void handleF25() {geklickteFigurErmitteln(25);}
+	@FXML public void handleF26() {geklickteFigurErmitteln(26);}
+	@FXML public void handleF27() {geklickteFigurErmitteln(27);}
+	@FXML public void handleF28() {geklickteFigurErmitteln(28);}
+	@FXML public void handleF29() {geklickteFigurErmitteln(29);}
+	@FXML public void handleF30() {geklickteFigurErmitteln(30);}
+	@FXML public void handleF31() {geklickteFigurErmitteln(31);}
+	@FXML public void handleF32() {geklickteFigurErmitteln(32);}
+	@FXML public void handleF33() {geklickteFigurErmitteln(33);}
+	@FXML public void handleF34() {geklickteFigurErmitteln(34);}
+	@FXML public void handleF35() {geklickteFigurErmitteln(35);}
+	@FXML public void handleF36() {geklickteFigurErmitteln(36);}
+	@FXML public void handleF37() {geklickteFigurErmitteln(37);}
+	@FXML public void handleF38() {geklickteFigurErmitteln(38);}
+	@FXML public void handleF39() {geklickteFigurErmitteln(39);}
+	@FXML public void handleF40() {geklickteFigurErmitteln(40);}
+	@FXML public void handleF41() {geklickteFigurErmitteln(41);}
+	@FXML public void handleF42() {geklickteFigurErmitteln(42);}
+	@FXML public void handleF43() {geklickteFigurErmitteln(43);}
+	@FXML public void handleF44() {geklickteFigurErmitteln(44);}	
 	/*
 	 * neues Spiel wird gestartet, Felder und Figuren werden initialisiert
 	 */
 	@FXML public void handleNeuesSpielMenu()
 	{
-		textLöschen();
+		textLoeschen();
 		textAusgeben("Initialisiere Spielfeld...");
 		/*
 		 * Initialisierung des Arrays mit Spielfeldelementen
@@ -108,14 +145,6 @@ public class MainWindowController
 		zielFelderGruen[0] = zielGruen4; zielFelderGruen[1] = zielGruen3; zielFelderGruen[2] = zielGruen2; zielFelderGruen[3] = zielGruen1;
 		zielFelderGelb[0] = zielGelb4; zielFelderGelb[1] = zielGelb3; zielFelderGelb[2] = zielGelb2; zielFelderGelb[3] = zielGelb1;
 		/*
-		 * Anlegen der Figuren
-		 */
-		/*
-		blau1 = new Figur(1); blau2 = new Figur(1); blau3 = new Figur(1); blau4 = new Figur(1);
-		rot1 = new Figur(2); rot2 = new Figur(2); rot3 = new Figur(2); rot4 = new Figur(2);
-		gruen1 = new Figur(3); gruen2 = new Figur(3); gruen3 = new Figur(3); gruen4 = new Figur(3); 
-		gelb1 = new Figur(4); gelb2 = new Figur(4); gelb3 = new Figur(4); gelb4 = new Figur(4);
-		/*
 		 * Initialisieren des Arrays fuer die Figuren
 		 */
 		for (int i = 0; i < 4; i++)
@@ -132,7 +161,6 @@ public class MainWindowController
 		{
 			spieler[i] = new Spieler(i + 1);
 		}
-		//spieler1 = new Spieler(1); spieler2 = new Spieler(2); spieler3 = new Spieler(3); spieler4 = new Spieler(4);
 		/*
 		 * Zuruecksetzen aller Felder in nicht sichtbaren und deaktivierten Zustand
 		 */
@@ -164,16 +192,13 @@ public class MainWindowController
 		/*
 		 * Setzen von spielZuEnde auf false, da noch keiner gewonnen hat
 		 */
-		spielZuEnde = false;
+		//spielZuEnde = false;
+		
 		/*
-		 * Spieler 1 (blau) fängt an
-		 */
-		spieler[0].setIstAmZug(true);
-		/*
-		 * Abfragen, welcher Spieler am Zug ist
+		 * Spieler 1 (blau) faengt an
 		 */
 		zugInit(spieler[0]);
-		//for (int i = 0; i < 4; i++) {if (spieler[i].getIstAmZug() == true){zugAusführen(i + 1);}}
+		//for (int i = 0; i < 4; i++) {if (spieler[i].getIstAmZug() == true){zugAusfï¿½hren(i + 1);}}
 		/*
 		 * Testen, ob ein Spieler gewonnen hat
 		 
@@ -181,7 +206,7 @@ public class MainWindowController
 		{
 			if (spieler[i].getHatGewonnen() == true)
 			{
-				if (i == 1) {textAusgeben("Sie haben gewonnen."); textAusgeben("Herzlichen Glückwunsch!");}
+				if (i == 1) {textAusgeben("Sie haben gewonnen."); textAusgeben("Herzlichen Glï¿½ckwunsch!");}
 				else {textAusgeben("Sie haben verloren."); textAusgeben("Spieler " + spieler[i].getSpielernummer() + " ist der Sieger.");}
 				spielZuEnde = true;
 				break;
@@ -204,29 +229,42 @@ public class MainWindowController
 	{
 		if (s.getSpielernummer() == 1)
 		{
-			s.setIstAmZug(true);
+			//s.setIstAmZug(true);
 			textAusgeben("Sie sind an der Reihe.");
+			wuerfel.resetWurfnummer();
 			wuerfelButton.setDisable(false);
 		}
 		else
 		{
-			s.setIstAmZug(true);
+			//s.setIstAmZug(true);
 			textAusgeben("Spieler " + s.getSpielernummer() + " ist an der Reihe.");
 			wuerfel.wuerfeln();
-			textAusgeben("Spieler " + s.getSpielernummer() + " hat eine " + wuerfel.getAugenzahl() + " gewürfelt.");
-			zug(figur[s.getSpielernummer()][(int)(Math.random() * 4)]);
+			textAusgeben("Spieler " + s.getSpielernummer() + " hat eine " + wuerfel.getAugenzahl() + " gewÃ¼rfelt.");
+			int r = (int)(Math.random() * 4);
+			while (prÃ¼feKI(figur[s.getSpielernummer() - 1][r]) == false)
+			{
+				r = (int)(Math.random() * 4);
+			}
+			zugKI(figur[s.getSpielernummer() - 1][r]);
 		}
 	}
 	@FXML public void handleWuerfelButton()
 	{
+		System.out.println("hallo");
 		wuerfelButton.setDisable(true);
 		wuerfel.wuerfeln();
-		textAusgeben("Sie haben eine " + wuerfel.getAugenzahl() + " gewürfelt.");
+		textAusgeben("Sie haben eine " + wuerfel.getAugenzahl() + " gewuerfelt.");
+		int z = 0;
 		for (int i = 0; i < 4; i++)
 		{
-			if (figur[0][i].getFigurPosition() == 0) {for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(false);}}
+			if (figur[0][i].getFigurPosition() == 0) {for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(false);} z++;}
 			else if (figur[0][i].getFigurPosition() <= 40) {felder[figur[0][i].getFigurPosition() - 1].setDisable(false);}
 			else {zielFelderBlau[figur[0][i].getFigurPosition() - 40].setDisable(false);}
+		}
+		if (z == 4)
+		{
+			if (wuerfel.getWurfnummer() < 3) {wuerfelButton.setDisable(false);}
+			else {zugEnde(spieler[0]);}
 		}
 	}
 	public void geklickteFigurErmitteln(int feldnummer)
@@ -235,30 +273,89 @@ public class MainWindowController
 		{
 			if (figur[0][i].getFigurPosition() == feldnummer)
 			{
-				zug(figur[0][i]); break;
+				zugMensch(figur[0][i]); break;
 			}
 		}
 	}
-	public void zug(Figur f)
+	public void disableFelder()
+	{
+		for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(true); zielFelderBlau[s].setDisable(false);}
+		for (int i = 0; i < 40; i++) {felder[i].setDisable(true);}
+	}
+	public void zugMensch(Figur f)
 	{
 		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)
 		{
 			if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == true)
 			{
+				disableFelder();
 				f.neuAufFeldSetzen();
 				aktualisiereGUI(f);
+				wuerfelButton.setDisable(false);
+//				zugEnde(spieler[f.getFigurSpieler() - 1]);
 			}
 			else if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == false)
 			{
-				textAusgeben("Kein gültiger Spielzug.");
-				textAusgeben("Nur bei einer 6 dürfen Sie eine neue Figur raussetzen.");
+				textAusgeben("Kein gueltiger Spielzug.");
+				textAusgeben("Nur bei einer 6 duerfen Sie eine neue Figur raussetzen.");
 			}
 			else
 			{
 				f.Setzen(wuerfel.getAugenzahl());
+				aktualisiereGUI(f);
+				disableFelder();
+				if (wuerfel.sechsGewuerfelt() == true) {wuerfelButton.setDisable(false);}
+				else {zugEnde(spieler[f.getFigurSpieler() - 1]);}
 			}
 		}
-		else {textAusgeben("Kein gültiger Spielzug.");}
+		else {textAusgeben("Kein gueltiger Spielzug.");}
+	}
+	public void zugKI(Figur f)
+	{
+		//Thread KI = new Thread(new Runnable()
+	//	{
+		//	public void run()
+		//	{
+				if (f.getFigurPosition() == 0) {f.neuAufFeldSetzen(); aktualisiereGUI(f); zugEnde(spieler[f.getFigurSpieler() - 1]);}
+				else {f.Setzen(wuerfel.getAugenzahl()); aktualisiereGUI(f); zugEnde(spieler[f.getFigurSpieler() - 1]);}
+		//	}
+		//});
+	//	KI.start();
+	}
+	public boolean prÃ¼feKI(Figur f)
+	{
+		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)
+		{
+			if (f.getFigurPosition() == 0 && wuerfel.getAugenzahl() != 6)
+			{
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	public void zugEnde(Spieler s)
+	{
+		/*
+		 * testen, ob der Spieler durch diesen Zug gewonnen hat
+		 * (wenn Position aller Figuren grÃ¶ÃŸer 40, also im Zielfeld)
+		 */
+		int z = 0;
+		for (int i = 4; i < 0; i++)
+		{
+			if (figur[s.getSpielernummer()][i].getInZielFeldern() == true) {z++;}
+		}
+		if (z != 4)
+		{
+//			if (s.getSpielernummer() == 4) {zugInit(spieler[0]);}
+//			else {zugInit(spieler[s.getSpielernummer()]);}
+			zugInit(spieler[0]);
+		}
+		else
+		{
+			if (s.getSpielernummer() == 1) {textAusgeben("Sie haben gewonnen."); textAusgeben("Herzlichen Glueckwunsch!");}
+			else {textAusgeben("Sie haben verloren."); textAusgeben("Spieler " + s.getSpielernummer() + " ist der Sieger.");}
+		}
 	}
 	/*
 	 * Methode fuer Textausgabe in der Seitenleiste
@@ -268,9 +365,9 @@ public class MainWindowController
 		textAusgabe.appendText(s + "\n");
 	}
 	/*
-	 * Methode zum Zurücksetzen der Textausgabe
+	 * Methode zum Zuruecksetzen der Textausgabe
 	 */
-	public void textLöschen()
+	public void textLoeschen()
 	{
 		textAusgabe.setText("");
 	}
@@ -526,6 +623,7 @@ public class MainWindowController
 				}
 			});
 			animationUpdate.start();
+			//Platform.runLater(animationUpdate);
 		}
 	}
 }

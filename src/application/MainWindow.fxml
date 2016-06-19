@@ -46,7 +46,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f39" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f39" disable="true" fill="#3daeff99" onMouseClicked="#handleF39" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -58,7 +58,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f40" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f40" disable="true" fill="#3daeff99" onMouseClicked="#handleF40" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -86,7 +86,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f5" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f5" disable="true" fill="#3daeff99" onMouseClicked="#handleF5" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -98,7 +98,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f4" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f4" disable="true" fill="#3daeff99" onMouseClicked="#handleF4" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -110,7 +110,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f3" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f3" disable="true" fill="#3daeff99" onMouseClicked="#handleF3" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -122,7 +122,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f2" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f2" disable="true" fill="#3daeff99" onMouseClicked="#handleF2" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -138,7 +138,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f6" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f6" disable="true" fill="#3daeff99" onMouseClicked="#handleF6" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -150,7 +150,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f7" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f7" disable="true" fill="#3daeff99" onMouseClicked="#handleF7" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -162,7 +162,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f8" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f8" disable="true" fill="#3daeff99" onMouseClicked="#handleF8" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -178,7 +178,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f11" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f11" disable="true" fill="#3daeff99" onMouseClicked="#handleF11" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -190,7 +190,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f10" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f10" disable="true" fill="#3daeff99" onMouseClicked="#handleF10" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -202,7 +202,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f9" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f9" disable="true" fill="#3daeff99" onMouseClicked="#handleF9" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -218,7 +218,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f14" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f14" disable="true" fill="#3daeff99" onMouseClicked="#handleF14" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -230,7 +230,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f13" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f13" disable="true" fill="#3daeff99" onMouseClicked="#handleF13" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -242,7 +242,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f12" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f12" disable="true" fill="#3daeff99" onMouseClicked="#handleF12" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -258,7 +258,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f18" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f18" disable="true" fill="#3daeff99" onMouseClicked="#handleF18" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -270,7 +270,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f17" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f17" disable="true" fill="#3daeff99" onMouseClicked="#handleF17" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -282,7 +282,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f16" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f16" disable="true" fill="#3daeff99" onMouseClicked="#handleF16" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -294,7 +294,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f15" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f15" disable="true" fill="#3daeff99" onMouseClicked="#handleF15" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -310,7 +310,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f21" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f21" disable="true" fill="#3daeff99" onMouseClicked="#handleF21" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -322,7 +322,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f20" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f20" disable="true" fill="#3daeff99" onMouseClicked="#handleF20" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -334,7 +334,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f19" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f19" disable="true" fill="#3daeff99" onMouseClicked="#handleF19" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -350,7 +350,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f22" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f22" disable="true" fill="#3daeff99" onMouseClicked="#handleF22" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -362,7 +362,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f23" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f23" disable="true" fill="#3daeff99" onMouseClicked="#handleF23" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -374,7 +374,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f24" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f24" disable="true" fill="#3daeff99" onMouseClicked="#handleF24" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -386,7 +386,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f25" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f25" disable="true" fill="#3daeff99" onMouseClicked="#handleF25" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -402,7 +402,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f28" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f28" disable="true" fill="#3daeff99" onMouseClicked="#handleF28" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -414,7 +414,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f27" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f27" disable="true" fill="#3daeff99" onMouseClicked="#handleF27" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -426,7 +426,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f26" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f26" disable="true" fill="#3daeff99" onMouseClicked="#handleF26" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -442,7 +442,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f29" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f29" disable="true" fill="#3daeff99" onMouseClicked="#handleF29" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -454,7 +454,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f30" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f30" disable="true" fill="#3daeff99" onMouseClicked="#handleF30" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -466,7 +466,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f31" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f31" disable="true" fill="#3daeff99" onMouseClicked="#handleF31" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -482,7 +482,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f32" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f32" disable="true" fill="#3daeff99" onMouseClicked="#handleF32" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -494,7 +494,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f33" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f33" disable="true" fill="#3daeff99" onMouseClicked="#handleF33" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -506,7 +506,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f34" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f34" disable="true" fill="#3daeff99" onMouseClicked="#handleF34" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -522,7 +522,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f35" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f35" disable="true" fill="#3daeff99" onMouseClicked="#handleF35" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -534,7 +534,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f36" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f36" disable="true" fill="#3daeff99" onMouseClicked="#handleF36" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -546,7 +546,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f37" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f37" disable="true" fill="#3daeff99" onMouseClicked="#handleF37" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -558,7 +558,7 @@
                                        <effect>
                                           <DropShadow color="#000000f2" height="12.0" offsetY="1.0" radius="5.5" spread="0.4" width="12.0" />
                                        </effect></Circle>
-                                    <Circle fx:id="f38" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="f38" disable="true" fill="#3daeff99" onMouseClicked="#handleF38" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -814,7 +814,7 @@
                                        <effect>
                                           <DropShadow color="#000000e7" height="20.75" offsetY="3.0" radius="9.877500000000001" spread="0.2" width="20.76" />
                                        </effect></Rectangle>
-                                    <Circle fx:id="zielBlau1" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="zielBlau1" disable="true" fill="#3daeff99" onMouseClicked="#handleF44" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -826,7 +826,7 @@
                                        <effect>
                                           <DropShadow color="#000000e7" height="20.75" offsetY="3.0" radius="9.877500000000001" spread="0.2" width="20.76" />
                                        </effect></Rectangle>
-                                    <Circle fx:id="zielBlau2" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="zielBlau2" disable="true" fill="#3daeff99" onMouseClicked="#handleF43" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -838,7 +838,7 @@
                                        <effect>
                                           <DropShadow color="#000000e7" height="20.75" offsetY="3.0" radius="9.877500000000001" spread="0.2" width="20.76" />
                                        </effect></Rectangle>
-                                    <Circle fx:id="zielBlau3" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="zielBlau3" disable="true" fill="#3daeff99" onMouseClicked="#handleF42" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
@@ -850,7 +850,7 @@
                                        <effect>
                                           <DropShadow color="#000000e7" height="20.75" offsetY="3.0" radius="9.877500000000001" spread="0.2" width="20.76" />
                                        </effect></Rectangle>
-                                    <Circle fx:id="zielBlau4" disable="true" fill="#3daeff99" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                                    <Circle fx:id="zielBlau4" disable="true" fill="#3daeff99" onMouseClicked="#handleF41" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false">
                                        <effect>
                                           <DropShadow color="#0000005a" height="15.93" offsetX="2.0" offsetY="3.0" radius="7.465" spread="0.2" width="15.93" />
                                        </effect></Circle>
