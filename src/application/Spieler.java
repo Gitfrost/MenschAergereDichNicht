@@ -5,14 +5,14 @@ public class Spieler
 	private int spielernummer;
 	//private boolean nutztKI;
 	private boolean istAmZug;
-	private boolean hatGewonnen;
+	//private boolean hatGewonnen;
 	/*
 	 * Konstruktor fuer Spieler mit Übergabe der Spielernummer
 	 */
 	public Spieler(int n)
 	{
 		spielernummer = n;
-		hatGewonnen = false;
+		//hatGewonnen = false;
 	}
 	/*
 	 * get-Methode fuer spielernummer
@@ -38,17 +38,17 @@ public class Spieler
 	/*
 	 * get-Methode fuer hatGewonnen
 	 */
-	public boolean getHatGewonnen()
-	{
-		return hatGewonnen;
-	}
+//	public boolean getHatGewonnen()
+//	{
+//		return hatGewonnen;
+//	}
 	/*
 	 * set-Methode fuer hatGewonnen
 	 */
-	public void setHatGewonnen(boolean b)
-	{
-		hatGewonnen = b;
-	}
+//	public void setHatGewonnen(boolean b)
+//	{
+//		hatGewonnen = b;
+//	}
 	/*
 	public String toString()
 	{

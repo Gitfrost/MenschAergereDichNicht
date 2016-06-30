@@ -3,11 +3,11 @@ package application;
 public class Wuerfel
 {
 	private int augenzahl;
-	private int wurfnummer;
+	private int wurfanzahl;
 
-	public int wuerfeln() //liefert zufällige Zahl zwischen 1 und 6
+	public int wuerfeln() //liefert zufaellige Zahl zwischen 1 und 6
 	{
-		wurfnummer++;
+		wurfanzahl++;
 		augenzahl = (int)(Math.random() * 6) + 1;
 		return augenzahl;
 	}
@@ -23,12 +23,12 @@ public class Wuerfel
 	{
 		return augenzahl;
 	}
-	public void resetWurfnummer()
+	public void resetWurfanzahl()
 	{
-		wurfnummer = 0;
+		wurfanzahl = 0;
 	}
-	public int getWurfnummer()
+	public int getWurfanzahl()
 	{
-		return wurfnummer;
+		return wurfanzahl;
 	}
 }

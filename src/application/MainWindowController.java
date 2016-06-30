@@ -11,7 +11,7 @@ import javafx.scene.shape.Circle;
  * Controller fuer die grafische Oberflaeche
  * enthaelt Methode zur Aktualisierung des GUI
  */
-public class MainWindowController
+public class MainWindowController implements ThreadCompleteListener
 {
 	/*
 	 * 4 am Spieler beteiligte Spieler
@@ -190,29 +190,9 @@ public class MainWindowController
 		textAusgeben("Neues Spiel gestartet...");
 		textAusgeben("Sie sind Spieler 1 (blau).");
 		/*
-		 * Setzen von spielZuEnde auf false, da noch keiner gewonnen hat
-		 */
-		//spielZuEnde = false;
-		
-		/*
 		 * Spieler 1 (blau) faengt an
 		 */
 		zugInit(spieler[0]);
-		//for (int i = 0; i < 4; i++) {if (spieler[i].getIstAmZug() == true){zugAusfÔøΩhren(i + 1);}}
-		/*
-		 * Testen, ob ein Spieler gewonnen hat
-		 
-		for (int i = 0; i < 4; i++)
-		{
-			if (spieler[i].getHatGewonnen() == true)
-			{
-				if (i == 1) {textAusgeben("Sie haben gewonnen."); textAusgeben("Herzlichen GlÔøΩckwunsch!");}
-				else {textAusgeben("Sie haben verloren."); textAusgeben("Spieler " + spieler[i].getSpielernummer() + " ist der Sieger.");}
-				spielZuEnde = true;
-				break;
-			}
-		}
-		*/
 	}
 	@FXML public void handleBeendenMenu()
 	{
@@ -224,47 +204,53 @@ public class MainWindowController
 	}
 	/*
 	 * Einleiten des Spielzuges
+	 * Zuruecksetzen aller Spieler auf istAmZug = false
+	 * Setzen des aktuellen Spielers (s) auf istAmZug = true
+	 * d.h. es kann immer nur ein Spieler am Zug sein
 	 */
 	public void zugInit(Spieler s)
 	{
+		for (int i = 0; i < 4; i++) {spieler[i].setIstAmZug(false);}
+		s.setIstAmZug(true);
+		wuerfel.resetWurfanzahl();
 		if (s.getSpielernummer() == 1)
 		{
-			//s.setIstAmZug(true);
 			textAusgeben("Sie sind an der Reihe.");
-			wuerfel.resetWurfnummer();
 			wuerfelButton.setDisable(false);
 		}
 		else
 		{
-			//s.setIstAmZug(true);
 			textAusgeben("Spieler " + s.getSpielernummer() + " ist an der Reihe.");
-			wuerfel.wuerfeln();
-			textAusgeben("Spieler " + s.getSpielernummer() + " hat eine " + wuerfel.getAugenzahl() + " gew√ºrfelt.");
-			int r = (int)(Math.random() * 4);
-			while (pr√ºfeKI(figur[s.getSpielernummer() - 1][r]) == false)
-			{
-				r = (int)(Math.random() * 4);
-			}
-			zugKI(figur[s.getSpielernummer() - 1][r]);
+			wuerfelnKI(s);
 		}
 	}
+	/*
+	 * Handler-Methode fuer den Wuerfelbutton
+	 */
 	@FXML public void handleWuerfelButton()
 	{
-		System.out.println("hallo");
 		wuerfelButton.setDisable(true);
 		wuerfel.wuerfeln();
 		textAusgeben("Sie haben eine " + wuerfel.getAugenzahl() + " gewuerfelt.");
-		int z = 0;
+		int z = 0; //Zaehlvariable fuer Figuren in den Startfeldern
+		/*
+		 * Aktivieren der Spielfeldelemente, auf denen eine Figur steht
+		 * d.h. Auslˆsen eines Handlers mˆglich
+		 */
 		for (int i = 0; i < 4; i++)
 		{
 			if (figur[0][i].getFigurPosition() == 0) {for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(false);} z++;}
 			else if (figur[0][i].getFigurPosition() <= 40) {felder[figur[0][i].getFigurPosition() - 1].setDisable(false);}
-			else {zielFelderBlau[figur[0][i].getFigurPosition() - 40].setDisable(false);}
+			else {zielFelderBlau[figur[0][i].getFigurPosition() - 41].setDisable(false);}
 		}
+		/*
+		 * Ermitteln, ob der Zug bereits beendet wird, ohne ein Figur zu setzen
+		 * d.h. 3 mal keine sechs, wenn alle Figuren in den Startfeldern stehen (z=4)
+		 */
 		if (z == 4)
 		{
-			if (wuerfel.getWurfnummer() < 3) {wuerfelButton.setDisable(false);}
-			else {zugEnde(spieler[0]);}
+			if (wuerfel.getWurfanzahl() < 3 || wuerfel.sechsGewuerfelt() == true) {wuerfelButton.setDisable(false);}
+			else {zugEnde();}
 		}
 	}
 	public void geklickteFigurErmitteln(int feldnummer)
@@ -284,6 +270,9 @@ public class MainWindowController
 	}
 	public void zugMensch(Figur f)
 	{
+		/*
+		 * Testen, ob der Zug auf dem Spielbrett ueberhaupt zul‰ssig ist
+		 */
 		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)
 		{
 			if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == true)
@@ -291,8 +280,6 @@ public class MainWindowController
 				disableFelder();
 				f.neuAufFeldSetzen();
 				aktualisiereGUI(f);
-				wuerfelButton.setDisable(false);
-//				zugEnde(spieler[f.getFigurSpieler() - 1]);
 			}
 			else if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == false)
 			{
@@ -301,28 +288,57 @@ public class MainWindowController
 			}
 			else
 			{
+				disableFelder();
 				f.Setzen(wuerfel.getAugenzahl());
 				aktualisiereGUI(f);
-				disableFelder();
-				if (wuerfel.sechsGewuerfelt() == true) {wuerfelButton.setDisable(false);}
-				else {zugEnde(spieler[f.getFigurSpieler() - 1]);}
+				
 			}
 		}
 		else {textAusgeben("Kein gueltiger Spielzug.");}
 	}
-	public void zugKI(Figur f)
+	public void wuerfelnKI(Spieler s)
 	{
-		//Thread KI = new Thread(new Runnable()
-	//	{
-		//	public void run()
-		//	{
-				if (f.getFigurPosition() == 0) {f.neuAufFeldSetzen(); aktualisiereGUI(f); zugEnde(spieler[f.getFigurSpieler() - 1]);}
-				else {f.Setzen(wuerfel.getAugenzahl()); aktualisiereGUI(f); zugEnde(spieler[f.getFigurSpieler() - 1]);}
-		//	}
-		//});
-	//	KI.start();
+		int z = 0; // Zaehlvariable fuer Figuren in den Startfeldern
+		do
+		{
+			wuerfel.wuerfeln();
+			textAusgeben("Spieler " + s.getSpielernummer() + " hat eine " + wuerfel.getAugenzahl() + " gewuerfelt.");
+			for (int i = 0; i < 4; i++) {if (figur[s.getSpielernummer() - 1][i].getFigurPosition() == 0) {z++;}}
+			if (z == 4) // wenn alle Figuren in Startfeldern
+			{
+				if (wuerfel.sechsGewuerfelt() == true)
+				{
+					figur[s.getSpielernummer() - 1][0].neuAufFeldSetzen();
+					aktualisiereGUI(figur[s.getSpielernummer() - 1][0]);
+					return;
+				}
+			}
+		}
+		while (z == 4 && wuerfel.getWurfanzahl() < 3);
+		if (wuerfel.getWurfanzahl() >= 3) {zugEnde();}
+		else {zugKI(s);}
 	}
-	public boolean pr√ºfeKI(Figur f)
+	public void zugKI(Spieler s)
+	{
+		int r = (int)(Math.random() * 4);
+		while (pruefeKI(figur[s.getSpielernummer() - 1][r]) == false)
+		{
+			r = (int)(Math.random() * 4);
+		}
+		if (figur[s.getSpielernummer() - 1][r].getFigurPosition() == 0)
+		{
+			figur[s.getSpielernummer() - 1][r].neuAufFeldSetzen(); aktualisiereGUI(figur[s.getSpielernummer() - 1][r]);
+		}
+		else
+		{
+			figur[s.getSpielernummer() - 1][r].Setzen(wuerfel.getAugenzahl()); aktualisiereGUI(figur[s.getSpielernummer() - 1][r]);
+		}
+	}
+	/*
+	 * Testen, ob der zuf‰llig ausgew‰hlte Zug ein zul‰ssiger Spielzug ist
+	 * pruefeKI liefert false, wenn der Zug durch die Spielregeln verboten ist
+	 */
+	public boolean pruefeKI(Figur f)
 	{
 		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)
 		{
@@ -334,27 +350,19 @@ public class MainWindowController
 		}
 		return false;
 	}
-	public void zugEnde(Spieler s)
+	/*
+	 * Aufruf von zugInit() fuer den Spielers, der als n‰chstes an der Reihe ist
+	 */
+	public void zugEnde()
 	{
-		/*
-		 * testen, ob der Spieler durch diesen Zug gewonnen hat
-		 * (wenn Position aller Figuren gr√∂√üer 40, also im Zielfeld)
-		 */
-		int z = 0;
-		for (int i = 4; i < 0; i++)
+		for (int i = 0; i < 4; i++)
 		{
-			if (figur[s.getSpielernummer()][i].getInZielFeldern() == true) {z++;}
-		}
-		if (z != 4)
-		{
-//			if (s.getSpielernummer() == 4) {zugInit(spieler[0]);}
-//			else {zugInit(spieler[s.getSpielernummer()]);}
-			zugInit(spieler[0]);
-		}
-		else
-		{
-			if (s.getSpielernummer() == 1) {textAusgeben("Sie haben gewonnen."); textAusgeben("Herzlichen Glueckwunsch!");}
-			else {textAusgeben("Sie haben verloren."); textAusgeben("Spieler " + s.getSpielernummer() + " ist der Sieger.");}
+			if (spieler[i].getIstAmZug() == true)
+			{
+				//if (spieler[i].getSpielernummer() == 4) {zugInit(spieler[0]); break;}
+				//else {zugInit(spieler[i + 1]); break;}
+				zugInit(spieler[0]);
+			}
 		}
 	}
 	/*
@@ -372,6 +380,48 @@ public class MainWindowController
 		textAusgabe.setText("");
 	}
 	/*
+	 * Methode, die ausgef¸hrt wird, sobald der animationUpdate-Thread beendet ist
+	 */
+	@Override
+	public void notifyOfThreadComplete(Thread thread)
+	{
+		/*
+		 * Ermitteln des Spielers, der am Zug ist
+		 */
+		for(int i = 0; i < 4; i++)
+		{
+			if (spieler[i].getIstAmZug() == true)
+			{
+				/*
+				 * testen, ob der Spieler durch diesen Zug gewonnen hat
+				 */
+				/*
+				int z = 0;
+				for (int c = 4; c < 0; c++)
+				{
+					if (figur[spieler[i].getSpielernummer()][c].getInZielFeldern() == true) {z++;}
+				}
+				if (z == 4)
+				{
+					if (spieler[i].getSpielernummer() == 1) {textAusgeben("Sie haben gewonnen."); textAusgeben("Herzlichen Glueckwunsch!");}
+					else {textAusgeben("Sie haben verloren."); textAusgeben("Spieler " + spieler[i].getSpielernummer() + " ist der Sieger.");}
+				}
+				else
+				{
+				*/
+					if (i == 0) {if (wuerfel.sechsGewuerfelt() == true) {wuerfelButton.setDisable(false);} else {zugEnde();}}
+					else
+					{
+						//if (wuerfel.sechsGewuerfelt() == true) {wuerfelnKI(spieler[i]);} 
+						//else {
+						zugEnde();//}
+					}
+					break;
+				//}
+			}
+		}
+	}
+	/*
 	 * aktualisiert Spielfeld fuer angegebene Figur
 	 */
 	public void aktualisiereGUI(Figur f)
@@ -384,9 +434,9 @@ public class MainWindowController
 		 * aktualisieren der GUI Circle Elemente fuer Figur f
 		 */
 		{
-			Thread animationUpdate = new Thread(new Runnable()
+			NotifyingThread animationUpdate = new NotifyingThread()
 			{
-				public void run()
+				public void doRun()
 				{
 					/*
 					 * testen,ob Figur f in die Basis zurueckgesetzt wird (relative Position = 0)
@@ -617,13 +667,14 @@ public class MainWindowController
 									catch (InterruptedException e) {e.printStackTrace();}
 									count++;
 								}
+								
 							}						
 						}
 					}
 				}
-			});
+			};
+			animationUpdate.addListener(this);
 			animationUpdate.start();
-			//Platform.runLater(animationUpdate);
 		}
-	}
+	}	
 }

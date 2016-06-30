@@ -1021,7 +1021,7 @@
                   </AnchorPane>
                   <VBox fx:id="leisteVBox" prefHeight="600.0" prefWidth="200.0" stylesheets="@application.css">
                      <children>
-                        <TextArea fx:id="textAusgabe" editable="false" prefHeight="200.0" prefWidth="200.0" text="Herzlich Willkommen! Um ein neues Spiel zu starten, wählen Sie 'Neues Spiel' im Menu 'Spiel' aus." wrapText="true">
+                        <TextArea fx:id="textAusgabe" editable="false" prefHeight="200.0" prefWidth="200.0" text="Herzlich Willkommen!     Um ein neues Spiel zu starten, wählen Sie 'Neues Spiel' im Menu 'Spiel' aus." wrapText="true">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
