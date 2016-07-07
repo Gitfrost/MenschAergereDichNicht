@@ -19,19 +19,28 @@ public class Figur
 	 */
 	private int figurNummer;
 	/*
-	 * Zustand der Figur (false = auf normalen Spielfeldern, true = auf Zielfeldern)
+	 * Ort der Figur (false = auf normalen Spielfeldern, true = auf Zielfeldern)
 	 */
 	private boolean inZielFeldern;
 	/*
-	 * Konstruktor fuer Figur mit Uebergabe der Spielernummer
+	 * Zustand geschlagen (false = Figur wurde nicht geschlagen, true = Figur wurde geschlagen)
+	 */
+	private boolean geschlagen;
+	
+	/*
+	 * Konstruktor fuer Figur mit Uebergabe von Spieler- und Figurnummer 
+	 * 
+	 * Jede Figur steht bei ihrer Erzeugung im Startfeld.
+	 * Dementsprechend werden die anderen Eigenschaften initialisiert. 
 	 */
 	public Figur(int s, int n)
 	{
-		figurPosition = 0;
-		alteFigurPosition = 0;
 		figurSpieler = s;
 		figurNummer = n;
+		figurPosition = 0;
+		alteFigurPosition = 0;
 		inZielFeldern = false;
+		geschlagen = false;
 	}
 	
 	/*
@@ -40,6 +49,20 @@ public class Figur
 	public int getFigurPosition()
 	{
 		return figurPosition;
+	}
+	/*
+	 * get-Methode fuer absolute Position der Figur
+	 */
+	public int getAbsolutePosition(int p)
+	{
+		if (figurPosition != 0)
+		{
+			if (figurSpieler == 1) {return figurPosition + p;}
+			if (figurSpieler == 2) {if (figurPosition + p <= 30) {return figurPosition + p + 10;} else {return figurPosition + p - 30;}}
+			if (figurSpieler == 3) {if (figurPosition + p <= 20) {return figurPosition + p + 20;} else {return figurPosition + p - 20;}}
+			if (figurSpieler == 4) {if (figurPosition + p <= 10) {return figurPosition + p + 30;} else {return figurPosition + p - 10;}}
+		}
+		return 0;
 	}
 	/*
 	 * get-Methode fuer vorherige relative Position der Figur
@@ -70,14 +93,6 @@ public class Figur
 		return figurNummer;
 	}
 	/*
-	 * Methode fuer logisches Setzen der Figur
-	 */
-	public void Setzen(int anzahlFelder)
-	{
-		alteFigurPosition = figurPosition;
-		figurPosition = figurPosition + anzahlFelder;
-	}
-	/*
 	 * get-Methode fuer Zustand der Figur
 	 */
 	public boolean getInZielFeldern()
@@ -90,6 +105,28 @@ public class Figur
 	public void setInZielFeldern(boolean z)
 	{
 		inZielFeldern = z;
+	}
+	/*
+	 * get Methode fuer einen Schlagzug
+	 */
+	public boolean getGeschlagen()
+	{
+		return geschlagen;
+	}
+	/*
+	 * set Methode fuer einen Schlagzug
+	 */
+	public void setGeschlagen(boolean y)
+	{
+		geschlagen = y;
+	}
+	/*
+	 * Methode fuer logisches Setzen der Figur
+	 */
+	public void Setzen(int anzahlFelder)
+	{
+		alteFigurPosition = figurPosition;
+		figurPosition = figurPosition + anzahlFelder;
 	}
 	/*
 	 * Methode fuer logisches Setzen von der Basis auf das Spielfeld

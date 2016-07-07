@@ -2,17 +2,20 @@ package application;
 
 public class Spieler
 {
+	/*
+	 * Nummer des Spielers (1 bis 4)
+	 */
 	private int spielernummer;
-	//private boolean nutztKI;
+	/*
+	 * Zustand des Spielers
+	 */
 	private boolean istAmZug;
-	//private boolean hatGewonnen;
 	/*
 	 * Konstruktor fuer Spieler mit Übergabe der Spielernummer
 	 */
 	public Spieler(int n)
 	{
 		spielernummer = n;
-		//hatGewonnen = false;
 	}
 	/*
 	 * get-Methode fuer spielernummer
@@ -35,24 +38,4 @@ public class Spieler
 	{
 		istAmZug = b;
 	}
-	/*
-	 * get-Methode fuer hatGewonnen
-	 */
-//	public boolean getHatGewonnen()
-//	{
-//		return hatGewonnen;
-//	}
-	/*
-	 * set-Methode fuer hatGewonnen
-	 */
-//	public void setHatGewonnen(boolean b)
-//	{
-//		hatGewonnen = b;
-//	}
-	/*
-	public String toString()
-	{
-		return "Spieler " + spielernummer;
-	}
-	*/
 }

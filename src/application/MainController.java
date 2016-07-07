@@ -5,13 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 /*
  * Hauptklasse fuer das Spielfeld und alle dazugehoerigen Elemente
  * Controller fuer die grafische Oberflaeche
  * enthaelt Methode zur Aktualisierung des GUI
  */
-public class MainWindowController implements ThreadCompleteListener
+public class MainController implements AnimationFertigListener
 {
 	/*
 	 * 4 am Spieler beteiligte Spieler
@@ -29,10 +30,6 @@ public class MainWindowController implements ThreadCompleteListener
 	 * 1 am Spiel beteiligter Wuerfel
 	 */
 	private Wuerfel wuerfel = new Wuerfel();
-	/*
-	 * Steuervariable, spielZuEnde == true ist Abbruchbedingung der Hauptschleife
-	 */
-	//private boolean spielZuEnde;
 	/*
 	 * Anlegen der einzelnen Felder (JavaFX Circles)
 	 */
@@ -71,51 +68,51 @@ public class MainWindowController implements ThreadCompleteListener
 	/*
 	 * handler-Methoden fuer Felder
 	 */
-	@FXML public void handleF0() {geklickteFigurErmitteln(0);}
-	@FXML public void handleF1() {geklickteFigurErmitteln(1);}
-	@FXML public void handleF2() {geklickteFigurErmitteln(2);}
-	@FXML public void handleF3() {geklickteFigurErmitteln(3);}
-	@FXML public void handleF4() {geklickteFigurErmitteln(4);}
-	@FXML public void handleF5() {geklickteFigurErmitteln(5);}
-	@FXML public void handleF6() {geklickteFigurErmitteln(6);}
-	@FXML public void handleF7() {geklickteFigurErmitteln(7);}
-	@FXML public void handleF8() {geklickteFigurErmitteln(8);}
-	@FXML public void handleF9() {geklickteFigurErmitteln(9);}
-	@FXML public void handleF10() {geklickteFigurErmitteln(10);}
-	@FXML public void handleF11() {geklickteFigurErmitteln(11);}
-	@FXML public void handleF12() {geklickteFigurErmitteln(12);}
-	@FXML public void handleF13() {geklickteFigurErmitteln(13);}
-	@FXML public void handleF14() {geklickteFigurErmitteln(14);}
-	@FXML public void handleF15() {geklickteFigurErmitteln(15);}
-	@FXML public void handleF16() {geklickteFigurErmitteln(16);}
-	@FXML public void handleF17() {geklickteFigurErmitteln(17);}
-	@FXML public void handleF18() {geklickteFigurErmitteln(18);}
-	@FXML public void handleF19() {geklickteFigurErmitteln(19);}
-	@FXML public void handleF20() {geklickteFigurErmitteln(20);}
-	@FXML public void handleF21() {geklickteFigurErmitteln(21);}
-	@FXML public void handleF22() {geklickteFigurErmitteln(22);}
-	@FXML public void handleF23() {geklickteFigurErmitteln(23);}
-	@FXML public void handleF24() {geklickteFigurErmitteln(24);}
-	@FXML public void handleF25() {geklickteFigurErmitteln(25);}
-	@FXML public void handleF26() {geklickteFigurErmitteln(26);}
-	@FXML public void handleF27() {geklickteFigurErmitteln(27);}
-	@FXML public void handleF28() {geklickteFigurErmitteln(28);}
-	@FXML public void handleF29() {geklickteFigurErmitteln(29);}
-	@FXML public void handleF30() {geklickteFigurErmitteln(30);}
-	@FXML public void handleF31() {geklickteFigurErmitteln(31);}
-	@FXML public void handleF32() {geklickteFigurErmitteln(32);}
-	@FXML public void handleF33() {geklickteFigurErmitteln(33);}
-	@FXML public void handleF34() {geklickteFigurErmitteln(34);}
-	@FXML public void handleF35() {geklickteFigurErmitteln(35);}
-	@FXML public void handleF36() {geklickteFigurErmitteln(36);}
-	@FXML public void handleF37() {geklickteFigurErmitteln(37);}
-	@FXML public void handleF38() {geklickteFigurErmitteln(38);}
-	@FXML public void handleF39() {geklickteFigurErmitteln(39);}
-	@FXML public void handleF40() {geklickteFigurErmitteln(40);}
-	@FXML public void handleF41() {geklickteFigurErmitteln(41);}
-	@FXML public void handleF42() {geklickteFigurErmitteln(42);}
-	@FXML public void handleF43() {geklickteFigurErmitteln(43);}
-	@FXML public void handleF44() {geklickteFigurErmitteln(44);}	
+	@FXML public void handleF0() {zugMensch(figurErmitteln(0));}
+	@FXML public void handleF1() {zugMensch(figurErmitteln(1));}
+	@FXML public void handleF2() {zugMensch(figurErmitteln(2));}
+	@FXML public void handleF3() {zugMensch(figurErmitteln(3));}
+	@FXML public void handleF4() {zugMensch(figurErmitteln(4));}
+	@FXML public void handleF5() {zugMensch(figurErmitteln(5));}
+	@FXML public void handleF6() {zugMensch(figurErmitteln(6));}
+	@FXML public void handleF7() {zugMensch(figurErmitteln(7));}
+	@FXML public void handleF8() {zugMensch(figurErmitteln(8));}
+	@FXML public void handleF9() {zugMensch(figurErmitteln(9));}
+	@FXML public void handleF10() {zugMensch(figurErmitteln(10));}
+	@FXML public void handleF11() {zugMensch(figurErmitteln(11));}
+	@FXML public void handleF12() {zugMensch(figurErmitteln(12));}
+	@FXML public void handleF13() {zugMensch(figurErmitteln(13));}
+	@FXML public void handleF14() {zugMensch(figurErmitteln(14));}
+	@FXML public void handleF15() {zugMensch(figurErmitteln(15));}
+	@FXML public void handleF16() {zugMensch(figurErmitteln(16));}
+	@FXML public void handleF17() {zugMensch(figurErmitteln(17));}
+	@FXML public void handleF18() {zugMensch(figurErmitteln(18));}
+	@FXML public void handleF19() {zugMensch(figurErmitteln(19));}
+	@FXML public void handleF20() {zugMensch(figurErmitteln(20));}
+	@FXML public void handleF21() {zugMensch(figurErmitteln(21));}
+	@FXML public void handleF22() {zugMensch(figurErmitteln(22));}
+	@FXML public void handleF23() {zugMensch(figurErmitteln(23));}
+	@FXML public void handleF24() {zugMensch(figurErmitteln(24));}
+	@FXML public void handleF25() {zugMensch(figurErmitteln(25));}
+	@FXML public void handleF26() {zugMensch(figurErmitteln(26));}
+	@FXML public void handleF27() {zugMensch(figurErmitteln(27));}
+	@FXML public void handleF28() {zugMensch(figurErmitteln(28));}
+	@FXML public void handleF29() {zugMensch(figurErmitteln(29));}
+	@FXML public void handleF30() {zugMensch(figurErmitteln(30));}
+	@FXML public void handleF31() {zugMensch(figurErmitteln(31));}
+	@FXML public void handleF32() {zugMensch(figurErmitteln(32));}
+	@FXML public void handleF33() {zugMensch(figurErmitteln(33));}
+	@FXML public void handleF34() {zugMensch(figurErmitteln(34));}
+	@FXML public void handleF35() {zugMensch(figurErmitteln(35));}
+	@FXML public void handleF36() {zugMensch(figurErmitteln(36));}
+	@FXML public void handleF37() {zugMensch(figurErmitteln(37));}
+	@FXML public void handleF38() {zugMensch(figurErmitteln(38));}
+	@FXML public void handleF39() {zugMensch(figurErmitteln(39));}
+	@FXML public void handleF40() {zugMensch(figurErmitteln(40));}
+	@FXML public void handleF41() {zugMensch(figurErmitteln(41));}
+	@FXML public void handleF42() {zugMensch(figurErmitteln(42));}
+	@FXML public void handleF43() {zugMensch(figurErmitteln(43));}
+	@FXML public void handleF44() {zugMensch(figurErmitteln(44));}	
 	/*
 	 * neues Spiel wird gestartet, Felder und Figuren werden initialisiert
 	 */
@@ -215,11 +212,13 @@ public class MainWindowController implements ThreadCompleteListener
 		wuerfel.resetWurfanzahl();
 		if (s.getSpielernummer() == 1)
 		{
+			textAusgeben("");
 			textAusgeben("Sie sind an der Reihe.");
 			wuerfelButton.setDisable(false);
 		}
 		else
 		{
+			textAusgeben("");
 			textAusgeben("Spieler " + s.getSpielernummer() + " ist an der Reihe.");
 			wuerfelnKI(s);
 		}
@@ -232,11 +231,11 @@ public class MainWindowController implements ThreadCompleteListener
 		wuerfelButton.setDisable(true);
 		wuerfel.wuerfeln();
 		textAusgeben("Sie haben eine " + wuerfel.getAugenzahl() + " gewuerfelt.");
-		int z = 0; //Zaehlvariable fuer Figuren in den Startfeldern
 		/*
 		 * Aktivieren der Spielfeldelemente, auf denen eine Figur steht
 		 * d.h. Auslösen eines Handlers möglich
 		 */
+		int z = 0;// Zaehlvariable fuer Figuren in den Startfeldern
 		for (int i = 0; i < 4; i++)
 		{
 			if (figur[0][i].getFigurPosition() == 0) {for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(false);} z++;}
@@ -252,16 +251,40 @@ public class MainWindowController implements ThreadCompleteListener
 			if (wuerfel.getWurfanzahl() < 3 || wuerfel.sechsGewuerfelt() == true) {wuerfelButton.setDisable(false);}
 			else {zugEnde();}
 		}
+		else
+		{
+			int p = 0;
+			for (int i = 0; i < 4; i++)
+			{
+				if (zugPruefen(figur[0][i]) == false) {p++;}
+			}
+			if (p == 4 && wuerfel.sechsGewuerfelt() == false)
+			{
+				textAusgeben("Kein Zug mit einer " + wuerfel.getAugenzahl() + " moeglich.");
+				textAusgeben("Sie muessen aussetzen.");
+				zugEnde();
+				return;
+			}
+		}
 	}
-	public void geklickteFigurErmitteln(int feldnummer)
+	public void handleZugBeendenButton()
+	{
+	}
+	/*
+	 * Diese Methode ermittelt zu einer uebergebenen Feldnummer, die
+	 * eventuell auf diesem Feld stehende Figur und gibt diese zurueck.
+	 * Steht keine Figur auf dem Feld, wird null zurückgegeben.
+	 */
+	public Figur figurErmitteln(int feldnummer)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (figur[0][i].getFigurPosition() == feldnummer)
+			for (int c = 0; c < 4; c++)
 			{
-				zugMensch(figur[0][i]); break;
+				if (figur[i][c].getAbsolutePosition(0) == feldnummer) {return figur[i][c];}
 			}
 		}
+		return null;
 	}
 	public void disableFelder()
 	{
@@ -277,76 +300,130 @@ public class MainWindowController implements ThreadCompleteListener
 		{
 			if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == true)
 			{
-				disableFelder();
-				f.neuAufFeldSetzen();
-				aktualisiereGUI(f);
+				if (figurErmitteln(1) != null && figurErmitteln(1).getFigurSpieler() == 1) {textAusgeben("Erst das Startfeld freimachen.");}
+				else
+				{
+					if (figurErmitteln(1) != null && figurErmitteln(1).getFigurSpieler() != 1)
+					{
+						figurErmitteln(1).setGeschlagen(true);
+					}
+					disableFelder();
+					f.neuAufFeldSetzen();
+					aktualisiereGUI(f);
+				}
 			}
 			else if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == false)
 			{
 				textAusgeben("Kein gueltiger Spielzug.");
 				textAusgeben("Nur bei einer 6 duerfen Sie eine neue Figur raussetzen.");
+				wuerfelButton.setDisable(false);
 			}
 			else
 			{
-				disableFelder();
-				f.Setzen(wuerfel.getAugenzahl());
-				aktualisiereGUI(f);
-				
+				if (figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()) != null &&
+					figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()).getFigurSpieler() == 1)
+				{
+					textAusgeben("Kein gueltiger Spielzug.");
+				}
+				else
+				{
+					if (figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()) != null &&
+						figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()).getFigurSpieler() != 1)
+					{
+						figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()).setGeschlagen(true);
+					}
+					disableFelder();
+					f.Setzen(wuerfel.getAugenzahl());
+					aktualisiereGUI(f);
+				}
 			}
 		}
 		else {textAusgeben("Kein gueltiger Spielzug.");}
 	}
 	public void wuerfelnKI(Spieler s)
 	{
-		int z = 0; // Zaehlvariable fuer Figuren in den Startfeldern
+		int z;
 		do
 		{
+			z = 0; // Zaehlvariable fuer Figuren in den Startfeldern
 			wuerfel.wuerfeln();
 			textAusgeben("Spieler " + s.getSpielernummer() + " hat eine " + wuerfel.getAugenzahl() + " gewuerfelt.");
 			for (int i = 0; i < 4; i++) {if (figur[s.getSpielernummer() - 1][i].getFigurPosition() == 0) {z++;}}
-			if (z == 4) // wenn alle Figuren in Startfeldern
+			if (z == 4 && wuerfel.sechsGewuerfelt() == true) // wenn alle Figuren in Startfeldern und Augenzahl = 6
 			{
-				if (wuerfel.sechsGewuerfelt() == true)
-				{
-					figur[s.getSpielernummer() - 1][0].neuAufFeldSetzen();
-					aktualisiereGUI(figur[s.getSpielernummer() - 1][0]);
-					return;
-				}
+				zugKI(s);
+				return;
 			}
 		}
 		while (z == 4 && wuerfel.getWurfanzahl() < 3);
-		if (wuerfel.getWurfanzahl() >= 3) {zugEnde();}
+		if (z == 4 && wuerfel.getWurfanzahl() >= 3) {zugEnde();}
 		else {zugKI(s);}
 	}
 	public void zugKI(Spieler s)
 	{
+		int n = 0;
+		for (int i = 0; i < 4; i++)
+		{
+			if (zugPruefen(figur[s.getSpielernummer() - 1][i]) == false) {n++;}
+		}
+		if (n == 4)
+		{
+			textAusgeben("Spieler " + s.getSpielernummer() + " muss aussetzen.");
+			zugEnde();
+		}
 		int r = (int)(Math.random() * 4);
-		while (pruefeKI(figur[s.getSpielernummer() - 1][r]) == false)
+		while (zugPruefen(figur[s.getSpielernummer() - 1][r]) == false)
 		{
 			r = (int)(Math.random() * 4);
 		}
 		if (figur[s.getSpielernummer() - 1][r].getFigurPosition() == 0)
 		{
+			if (s.getSpielernummer() == 2) {if (figurErmitteln(11) != null) {figurErmitteln(11).setGeschlagen(true);}}
+			if (s.getSpielernummer() == 3) {if (figurErmitteln(21) != null) {figurErmitteln(21).setGeschlagen(true);}}
+			if (s.getSpielernummer() == 4) {if (figurErmitteln(31) != null) {figurErmitteln(31).setGeschlagen(true);}}
 			figur[s.getSpielernummer() - 1][r].neuAufFeldSetzen(); aktualisiereGUI(figur[s.getSpielernummer() - 1][r]);
 		}
 		else
 		{
+			if (figurErmitteln(figur[s.getSpielernummer() - 1][r].getAbsolutePosition(wuerfel.getAugenzahl())) != null)
+			{
+				figurErmitteln(figur[s.getSpielernummer() - 1][r].getAbsolutePosition(wuerfel.getAugenzahl())).setGeschlagen(true);
+			}
 			figur[s.getSpielernummer() - 1][r].Setzen(wuerfel.getAugenzahl()); aktualisiereGUI(figur[s.getSpielernummer() - 1][r]);
 		}
 	}
 	/*
-	 * Testen, ob der zufällig ausgewählte Zug ein zulässiger Spielzug ist
-	 * pruefeKI liefert false, wenn der Zug durch die Spielregeln verboten ist
+	 * Testen, ob der Zug mit der uebergebenen Figur zulässig ist
+	 * zugPruefen liefert false, wenn der Zug durch die Spielregeln verboten ist
 	 */
-	public boolean pruefeKI(Figur f)
+	public boolean zugPruefen(Figur f)
 	{
 		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)
 		{
-			if (f.getFigurPosition() == 0 && wuerfel.getAugenzahl() != 6)
+			if (f.getFigurPosition() == 0)
 			{
-				return false;
+				if (wuerfel.getAugenzahl() != 6) {return false;}
+				else
+				{
+					/*
+					 * testen, ob vor der Spielerbasis eine eigene Figur steht
+					 */
+					for (int i = 0; i < 4; i++)
+					{
+							if (figur[f.getFigurSpieler() - 1][i].getFigurPosition() == 1) {return false;}
+					}
+//					if (f.getFigurSpieler() == 2) {if (figurErmitteln(11) != null && figurErmitteln(11).getFigurSpieler() == 2) {return false;}}
+//					if (f.getFigurSpieler() == 3) {if (figurErmitteln(21) != null && figurErmitteln(21).getFigurSpieler() == 3) {return false;}}
+//					if (f.getFigurSpieler() == 4) {if (figurErmitteln(31) != null && figurErmitteln(31).getFigurSpieler() == 4) {return false;}}
+					return true;
+				}	
 			}
-			return true;
+			else
+			{
+				if (figurErmitteln(f.getAbsolutePosition(wuerfel.getAugenzahl())) != null &&
+						figurErmitteln(f.getAbsolutePosition(wuerfel.getAugenzahl())).getFigurSpieler() == f.getFigurSpieler()) {return false;}
+				else {return true;}
+			}
 		}
 		return false;
 	}
@@ -359,9 +436,8 @@ public class MainWindowController implements ThreadCompleteListener
 		{
 			if (spieler[i].getIstAmZug() == true)
 			{
-				//if (spieler[i].getSpielernummer() == 4) {zugInit(spieler[0]); break;}
-				//else {zugInit(spieler[i + 1]); break;}
-				zugInit(spieler[0]);
+				if (spieler[i].getSpielernummer() == 4) {zugInit(spieler[0]); break;}
+			else {zugInit(spieler[i + 1]); break;}
 			}
 		}
 	}
@@ -383,8 +459,29 @@ public class MainWindowController implements ThreadCompleteListener
 	 * Methode, die ausgeführt wird, sobald der animationUpdate-Thread beendet ist
 	 */
 	@Override
-	public void notifyOfThreadComplete(Thread thread)
+	public void auslösenAnimationFertig(Thread thread)
 	{
+		/*
+		 * Ermitteln, ob eine Figur geschlagen werden muss 
+		 */
+		for(int i = 0; i < 4; i++)
+		{
+			for (int c = 0; c < 4; c++)
+			{
+				if (figur[i][c].getGeschlagen() == true)
+				{
+					figur[i][c].schlagen();
+					figur[i][c].setGeschlagen(false);
+					if (figur[i][c].getFigurSpieler() == 1) {textAusgeben("Ihre Figur wurde geschlagen!");}
+					for (int n = 2; n < 5; n++)
+					{
+						if (figur[i][c].getFigurSpieler() == n) {textAusgeben("Eine Figur von Spieler " + n + " wurde geschlagen!");}
+					}
+					aktualisiereGUI(figur[i][c]);
+					return;
+				}
+			}
+		}
 		/*
 		 * Ermitteln des Spielers, der am Zug ist
 		 */
@@ -395,7 +492,6 @@ public class MainWindowController implements ThreadCompleteListener
 				/*
 				 * testen, ob der Spieler durch diesen Zug gewonnen hat
 				 */
-				/*
 				int z = 0;
 				for (int c = 4; c < 0; c++)
 				{
@@ -408,16 +504,13 @@ public class MainWindowController implements ThreadCompleteListener
 				}
 				else
 				{
-				*/
-					if (i == 0) {if (wuerfel.sechsGewuerfelt() == true) {wuerfelButton.setDisable(false);} else {zugEnde();}}
-					else
+					if (wuerfel.sechsGewuerfelt() == true)
 					{
-						//if (wuerfel.sechsGewuerfelt() == true) {wuerfelnKI(spieler[i]);} 
-						//else {
-						zugEnde();//}
+						if (spieler[i].getSpielernummer() == 1) {wuerfelButton.setDisable(false); break;}
+						else {wuerfelnKI(spieler[i]); break;}
 					}
-					break;
-				//}
+					else {zugEnde(); break;}
+				}
 			}
 		}
 	}
@@ -434,18 +527,18 @@ public class MainWindowController implements ThreadCompleteListener
 		 * aktualisieren der GUI Circle Elemente fuer Figur f
 		 */
 		{
-			NotifyingThread animationUpdate = new NotifyingThread()
+			AnimationThread animationUpdate = new AnimationThread()
 			{
+				private Paint nextColor;
 				public void doRun()
 				{
 					/*
-					 * testen,ob Figur f in die Basis zurueckgesetzt wird (relative Position = 0)
+					 * testen, ob Figur f geschlagen, d.h. in die Basis zurueckgesetzt wird (relative Position = 0)
 					 */
 					if (f.getFigurPosition() == 0)
 					{
 						if (f.getFigurSpieler() == 1)
 						{
-							felder[f.getAlteFigurPosition() - 1].setVisible(false);
 							for (int i = 0; i < 4; i++)
 							{
 								if (startFelderBlau[i].isVisible() == false) {startFelderBlau[i].setVisible(true); break;}
@@ -453,29 +546,23 @@ public class MainWindowController implements ThreadCompleteListener
 						}
 						if (f.getFigurSpieler() == 2)
 						{
-							if (f.getAlteFigurPosition() <= 30) {felder[f.getAlteFigurPosition() + 9].setVisible(false);}
-							else {felder[f.getAlteFigurPosition() - 31].setVisible(false);}
 							for (int i = 0; i < 4; i++)
 							{
-								if (startFelderBlau[i].isVisible() == false) {startFelderBlau[i].setVisible(true); break;}
+								if (startFelderRot[i].isVisible() == false) {startFelderRot[i].setVisible(true); break;}
 							}
 						}
 						if (f.getFigurSpieler() == 3)
 						{
-							if (f.getAlteFigurPosition() <= 20) {felder[f.getAlteFigurPosition() + 19].setVisible(false);}
-							else {felder[f.getAlteFigurPosition() - 21].setVisible(false);}
 							for (int i = 0; i < 4; i++)
 							{
-								if (startFelderBlau[i].isVisible() == false) {startFelderBlau[i].setVisible(true); break;}
+								if (startFelderGruen[i].isVisible() == false) {startFelderGruen[i].setVisible(true); break;}
 							}
 						}
 						if (f.getFigurSpieler() == 4)
 						{
-							if (f.getAlteFigurPosition() <= 10) {felder[f.getAlteFigurPosition() + 29].setVisible(false);}
-							else {felder[f.getAlteFigurPosition() - 11].setVisible(false);}
 							for (int i = 0; i < 4; i++)
 							{
-								if (startFelderBlau[i].isVisible() == false) {startFelderBlau[i].setVisible(true); break;}
+								if (startFelderGelb[i].isVisible() == false) {startFelderGelb[i].setVisible(true); break;}
 							}
 						}
 					}
@@ -545,8 +632,14 @@ public class MainWindowController implements ThreadCompleteListener
 									count++;
 								}
 								else
-								{	
-									felder[pos].setVisible(false);
+								{
+									if (nextColor != null)
+									{
+										felder[pos].setFill(nextColor);
+										nextColor = null;
+									}
+									else {felder[pos].setVisible(false);}
+									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}
 									felder[pos + 1].setFill(Color.web("3daeff99"));
 									felder[pos + 1].setVisible(true);
 									try {Thread.sleep(250);}
@@ -575,7 +668,13 @@ public class MainWindowController implements ThreadCompleteListener
 								}
 								else if (pos == 39)
 								{
-									felder[39].setVisible(false);
+									if (nextColor != null)
+									{
+										felder[pos].setFill(nextColor);
+										nextColor = null;
+									}
+									else {felder[pos].setVisible(false);}
+									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}
 									felder[0].setFill(Color.web("ff4343"));
 									felder[0].setVisible(true);
 									try {Thread.sleep(250);}
@@ -584,7 +683,13 @@ public class MainWindowController implements ThreadCompleteListener
 								}
 								else
 								{										
-									felder[pos].setVisible(false);							
+									if (nextColor != null)
+									{
+										felder[pos].setFill(nextColor);
+										nextColor = null;
+									}
+									else {felder[pos].setVisible(false);}
+									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}							
 									felder[pos + 1].setFill(Color.web("ff4343"));
 									felder[pos + 1].setVisible(true);
 									try {Thread.sleep(250);}
@@ -613,7 +718,13 @@ public class MainWindowController implements ThreadCompleteListener
 								}
 								else if (pos == 39)
 								{
-									felder[39].setVisible(false);
+									if (nextColor != null)
+									{
+										felder[pos].setFill(nextColor);
+										nextColor = null;
+									}
+									else {felder[pos].setVisible(false);}
+									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}
 									felder[0].setFill(Color.web("83d04f"));
 									felder[0].setVisible(true);
 									try {Thread.sleep(250);}
@@ -622,7 +733,13 @@ public class MainWindowController implements ThreadCompleteListener
 								}
 								else
 								{										
-									felder[pos].setVisible(false);							
+									if (nextColor != null)
+									{
+										felder[pos].setFill(nextColor);
+										nextColor = null;
+									}
+									else {felder[pos].setVisible(false);}
+									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}							
 									felder[pos + 1].setFill(Color.web("83d04f"));
 									felder[pos + 1].setVisible(true);
 									try {Thread.sleep(250);}
@@ -651,7 +768,13 @@ public class MainWindowController implements ThreadCompleteListener
 								}
 								else if (pos == 39)
 								{
-									felder[39].setVisible(false);
+									if (nextColor != null)
+									{
+										felder[pos].setFill(nextColor);
+										nextColor = null;
+									}
+									else {felder[pos].setVisible(false);}
+									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}
 									felder[0].setFill(Color.web("fff438"));
 									felder[0].setVisible(true);
 									try {Thread.sleep(250);}
@@ -660,7 +783,13 @@ public class MainWindowController implements ThreadCompleteListener
 								}
 								else
 								{
-									felder[pos].setVisible(false);							
+									if (nextColor != null)
+									{
+										felder[pos].setFill(nextColor);
+										nextColor = null;
+									}
+									else {felder[pos].setVisible(false);}
+									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}							
 									felder[pos + 1].setFill(Color.web("fff438"));
 									felder[pos + 1].setVisible(true);
 									try {Thread.sleep(250);}
@@ -671,10 +800,15 @@ public class MainWindowController implements ThreadCompleteListener
 							}						
 						}
 					}
+					try {
+						AnimationThread.sleep(1000);
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
 				}
 			};
 			animationUpdate.addListener(this);
 			animationUpdate.start();
 		}
-	}	
+	}
 }
