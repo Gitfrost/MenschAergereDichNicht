@@ -1,5 +1,11 @@
 package application;
 
+/*
+ * Von der Klasse Spieler werden im Spiel 4 Instanzen verwendet, um die
+ * Mitspieler (Mensch und KI) mit ihren Eigenschaften zu repraesentieren.
+ * 
+ * @author Lucas Johns
+ */
 public class Spieler
 {
 	/*
@@ -10,13 +16,16 @@ public class Spieler
 	 * Zustand des Spielers
 	 */
 	private boolean istAmZug;
+	
 	/*
 	 * Konstruktor fuer Spieler mit Übergabe der Spielernummer
 	 */
 	public Spieler(int n)
 	{
 		spielernummer = n;
+		istAmZug = false;
 	}
+	
 	/*
 	 * get-Methode fuer spielernummer
 	 */

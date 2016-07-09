@@ -1,5 +1,11 @@
 package application;
 
+/*
+ * Von der Klasse Wuerfel wird im Spiel eine Instanz verwendet,
+ * um einen Wuerfel mit seinen Eigenschaften zu repräsentieren.
+ * 
+ * @author Lucas Johns
+ */
 public class Wuerfel
 {
 	/*
@@ -10,8 +16,9 @@ public class Wuerfel
 	 * Anzahl der Wuerfe, die innerhalb eines Zuges bereits gemacht wurden
 	 */
 	private int wurfanzahl;
+	
 	/*
-	 * setzt augenzahl auf eine zufaellige Zahl zwischen 1 und 6
+	 * Diese Methode setzt augenzahl auf eine zufaellige Zahl zwischen 1 und 6
 	 */
 	public void wuerfeln()
 	{
@@ -19,7 +26,7 @@ public class Wuerfel
 		augenzahl = (int)(Math.random() * 6) + 1;
 	}
 	/*
-	 * Zustand des Wuerfels (true = letzter Wurf war eine sechs, false letzter Wurf war keine sechs)
+	 * Zustand des Wuerfels ("true" = letzter Wurf war eine sechs, "false" = letzter Wurf war keine sechs)
 	 */
 	public boolean sechsGewuerfelt()
 	{

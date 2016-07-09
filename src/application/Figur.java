@@ -1,5 +1,11 @@
 package application;
 
+/*
+ * Von der Klasse Figur werden im Spiel 16 Instanzen verwendet, um
+ * die Spielfiguren mit ihren Eigenschaften zu repraesentieren.
+ * 
+ * @author Lucas Johns
+ */
 public class Figur
 {
 	/*
@@ -52,10 +58,13 @@ public class Figur
 	}
 	/*
 	 * get-Methode fuer absolute Position der Figur
+	 * 
+	 * Da jeder Spieler auf dem gemeinsamen Spielplan eine eigene Startposition hat,
+	 * muss die absolute Position individuell berechnet werden.
 	 */
 	public int getAbsolutePosition(int p)
 	{
-		if (figurPosition != 0)
+		if (figurPosition != 0)// Die Position "0" beschreibt die Startfelder des Spielers und wird auch immer mit "0" zurückgegeben.
 		{
 			if (figurSpieler == 1) {return figurPosition + p;}
 			if (figurSpieler == 2) {if (figurPosition + p <= 30) {return figurPosition + p + 10;} else {return figurPosition + p - 30;}}

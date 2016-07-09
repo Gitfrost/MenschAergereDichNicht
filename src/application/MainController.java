@@ -2,15 +2,19 @@ package application;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 /*
- * Hauptklasse fuer das Spielfeld und alle dazugehoerigen Elemente
- * Controller fuer die grafische Oberflaeche
- * enthaelt Methode zur Aktualisierung des GUI
+ * Diese Klasse ist die Hauptklasse fuer das Spielfeld und alle dazugehoerigen Elemente.
+ * Sie dient auﬂerdem als Controller fuer die Oberflaeche.
+ * 
+ * @author Lucas Johns
  */
 public class MainController implements AnimationFertigListener
 {
@@ -19,11 +23,7 @@ public class MainController implements AnimationFertigListener
 	 */
 	private Spieler[] spieler = new Spieler[4];
 	/*
-	 * 16 am Spiel beteiligte Figuren
-	 */
-	//private Figur blau1, blau2, blau3, blau4, rot1, rot2, rot3, rot4, gruen1, gruen2, gruen3, gruen4, gelb1, gelb2, gelb3, gelb4;
-	/*
-	 * Array fuer Figuren
+	 * Array fuer Figuren (16)
 	 */
 	private Figur[][] figur = new Figur[4][4];
 	/*
@@ -44,9 +44,13 @@ public class MainController implements AnimationFertigListener
 	 */
 	@FXML private TextArea textAusgabe;
 	/*
+	 * Anlegen der Panes fuer die Wuerfelausgabe (6 Seiten)
+	 */
+	@FXML private Pane wuerfelPane1, wuerfelPane2, wuerfelPane3, wuerfelPane4, wuerfelPane5, wuerfelPane6, wuerfelPaneInit;
+	/*
 	 * Anlegen eines Buttons 'Wuerfeln' fuer die Seitenleiste
 	 */
-	@FXML private Button wuerfelButton;
+	@FXML private StackPane wuerfelStackPane;
 	/*
 	 * Anlegen des Arrays fuer die Spielfelder
 	 */
@@ -65,6 +69,10 @@ public class MainController implements AnimationFertigListener
 	private Circle[] zielFelderRot = new Circle[4];
 	private Circle[] zielFelderGruen = new Circle[4];
 	private Circle[] zielFelderGelb = new Circle[4];
+	/*
+	 * Anlegen des Arrays fuer die Wuerfelanzeige
+	 */
+	private Pane[] wuerfelAnzeige = new Pane[6];
 	/*
 	 * handler-Methoden fuer Felder
 	 */
@@ -118,7 +126,7 @@ public class MainController implements AnimationFertigListener
 	 */
 	@FXML public void handleNeuesSpielMenu()
 	{
-		textLoeschen();
+		textLoeschen();// reset der Textausgabe
 		textAusgeben("Initialisiere Spielfeld...");
 		/*
 		 * Initialisierung des Arrays mit Spielfeldelementen
@@ -141,6 +149,11 @@ public class MainController implements AnimationFertigListener
 		zielFelderRot[0] = zielRot4; zielFelderRot[1] = zielRot3; zielFelderRot[2] = zielRot2; zielFelderRot[3] = zielRot1;
 		zielFelderGruen[0] = zielGruen4; zielFelderGruen[1] = zielGruen3; zielFelderGruen[2] = zielGruen2; zielFelderGruen[3] = zielGruen1;
 		zielFelderGelb[0] = zielGelb4; zielFelderGelb[1] = zielGelb3; zielFelderGelb[2] = zielGelb2; zielFelderGelb[3] = zielGelb1;
+		/*
+		 * Initialisierung des Arrays mit Wuerfelelementen
+		 */
+		wuerfelAnzeige[0] = wuerfelPane1; wuerfelAnzeige[1] = wuerfelPane2; wuerfelAnzeige[2] = wuerfelPane3;
+		wuerfelAnzeige[3] = wuerfelPane4; wuerfelAnzeige[4] = wuerfelPane5; wuerfelAnzeige[5] = wuerfelPane6;
 		/*
 		 * Initialisieren des Arrays fuer die Figuren
 		 */
@@ -182,41 +195,57 @@ public class MainController implements AnimationFertigListener
 			zielFelderGelb[i].setVisible(false);
 		}
 		/*
+		 * Zuruecksetzen der WuerfelPanes in nicht sichtbaren Zustand
+		 */
+		for (int i = 0; i < 6; i++)
+		{
+			wuerfelAnzeige[i].setVisible(false);
+		}
+		wuerfelPaneInit.setVisible(true);// Anzeige des WuerfelPanes mit der Aufschrift "Wuerfeln"
+		/*
 		 * Aktualisieren der Textausgabe
 		 */
 		textAusgeben("Neues Spiel gestartet...");
 		textAusgeben("Sie sind Spieler 1 (blau).");
 		/*
+		 * Start des Spielzyklus
 		 * Spieler 1 (blau) faengt an
 		 */
 		zugInit(spieler[0]);
 	}
+	/*
+	 * Handler-Methode fuer den Menupunkt "Beenden"
+	 */
 	@FXML public void handleBeendenMenu()
 	{
-		Platform.exit();
-	}
-	@FXML public void handleAboutMenu()
-	{
-		
+		Platform.exit();// Beenden der Anwendung
 	}
 	/*
-	 * Einleiten des Spielzuges
-	 * Zuruecksetzen aller Spieler auf istAmZug = false
-	 * Setzen des aktuellen Spielers (s) auf istAmZug = true
-	 * d.h. es kann immer nur ein Spieler am Zug sein
+	 * Handler-Methode fuer des Menupunkt "About"
+	 */
+	@FXML public void handleAboutMenu()
+	{
+		Alert alert = new Alert(AlertType.INFORMATION);// Anzeige eines Informationsdialog
+		alert.setTitle("About");
+		alert.setHeaderText("Mensch Aergere Dich Nicht");
+		alert.setContentText("Mensch Aergere Dich Nicht \nVersion 1.0 \n \n Autor: Lucas Johns");
+		alert.showAndWait();
+	}
+	/*
+	 * Einleiten eines Spielzuges
 	 */
 	public void zugInit(Spieler s)
 	{
-		for (int i = 0; i < 4; i++) {spieler[i].setIstAmZug(false);}
-		s.setIstAmZug(true);
-		wuerfel.resetWurfanzahl();
-		if (s.getSpielernummer() == 1)
+		for (int i = 0; i < 4; i++) {spieler[i].setIstAmZug(false);}// Zuruecksetzen aller Spieler auf istAmZug = false
+		s.setIstAmZug(true);// Setzen des aktuellen Spielers (s) auf istAmZug = true
+		wuerfel.resetWurfanzahl(); // wurfanzahl = 0
+		if (s.getSpielernummer() == 1)// Abfrage, ob es sich bei Spieler s um Spieler 1, also einen Menschen handelt
 		{
 			textAusgeben("");
 			textAusgeben("Sie sind an der Reihe.");
-			wuerfelButton.setDisable(false);
+			wuerfelStackPane.setDisable(false);// Aktivierung des wuerfelStackPane, Handler kann ausgefuehrt werden
 		}
-		else
+		else// sonst statt Aktivierung des wuerfelStackPane, Aufruf der KI-spezifischen Methoden
 		{
 			textAusgeben("");
 			textAusgeben("Spieler " + s.getSpielernummer() + " ist an der Reihe.");
@@ -224,23 +253,38 @@ public class MainController implements AnimationFertigListener
 		}
 	}
 	/*
-	 * Handler-Methode fuer den Wuerfelbutton
+	 * Handler-Methode fuer das WuerfelStackPane
 	 */
-	@FXML public void handleWuerfelButton()
+	@FXML public void handleWuerfelStackPane()
 	{
-		wuerfelButton.setDisable(true);
+		wuerfelStackPane.setDisable(true);// Deaktivierung, um erneutes Ausloesen zu verhindern
+		wuerfelPaneInit.setVisible(false);// Ausblenden der Grafik mit der Aufschrift "Wuerfeln"
 		wuerfel.wuerfeln();
+		wuerfelAnzeigen();// Aktualisierung der Wuerfelgrafik
 		textAusgeben("Sie haben eine " + wuerfel.getAugenzahl() + " gewuerfelt.");
 		/*
 		 * Aktivieren der Spielfeldelemente, auf denen eine Figur steht
-		 * d.h. Auslˆsen eines Handlers mˆglich
+		 * Handler kann ausgefuehrt werden
 		 */
 		int z = 0;// Zaehlvariable fuer Figuren in den Startfeldern
 		for (int i = 0; i < 4; i++)
 		{
-			if (figur[0][i].getFigurPosition() == 0) {for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(false);} z++;}
-			else if (figur[0][i].getFigurPosition() <= 40) {felder[figur[0][i].getFigurPosition() - 1].setDisable(false);}
-			else {zielFelderBlau[figur[0][i].getFigurPosition() - 41].setDisable(false);}
+			/*
+			 * Abfrage, in welchem Bereich (startfelder, felder oder zielfelder) die entsprechenden Elemente aktiviert werden muessen
+			 */
+			if (figur[0][i].getFigurPosition() == 0)
+			{
+				for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(false);}
+				z++;
+			}
+			else if (figur[0][i].getFigurPosition() <= 40)
+			{
+				felder[figur[0][i].getFigurPosition() - 1].setDisable(false);
+			}
+			else
+			{
+				zielFelderBlau[figur[0][i].getFigurPosition() - 41].setDisable(false);
+			}
 		}
 		/*
 		 * Ermitteln, ob der Zug bereits beendet wird, ohne ein Figur zu setzen
@@ -248,32 +292,31 @@ public class MainController implements AnimationFertigListener
 		 */
 		if (z == 4)
 		{
-			if (wuerfel.getWurfanzahl() < 3 || wuerfel.sechsGewuerfelt() == true) {wuerfelButton.setDisable(false);}
+			if (wuerfel.getWurfanzahl() < 3 || wuerfel.sechsGewuerfelt() == true) {wuerfelStackPane.setDisable(false);} // erneutes Wuerfeln erlaubt
 			else {zugEnde();}
 		}
 		else
 		{
+			/*
+			 * Ueberpruefen, ob eine Situation ohne moegliche Ausfuehrung eines legitimen Spielzugs entsteht
+			 */
 			int p = 0;
 			for (int i = 0; i < 4; i++)
 			{
 				if (zugPruefen(figur[0][i]) == false) {p++;}
 			}
-			if (p == 4 && wuerfel.sechsGewuerfelt() == false)
+			if (p == 4 && wuerfel.sechsGewuerfelt() == false)// Wenn kein Zug moeglich ist (p=4) und keine sechs gewuerfelt wurde, endet der Zug
 			{
 				textAusgeben("Kein Zug mit einer " + wuerfel.getAugenzahl() + " moeglich.");
-				textAusgeben("Sie muessen aussetzen.");
+				textAusgeben("Sie muessen aussetzen.");// Ausgabe eines entsprechenden Hinweises
 				zugEnde();
 				return;
 			}
 		}
 	}
-	public void handleZugBeendenButton()
-	{
-	}
 	/*
-	 * Diese Methode ermittelt zu einer uebergebenen Feldnummer, die
-	 * eventuell auf diesem Feld stehende Figur und gibt diese zurueck.
-	 * Steht keine Figur auf dem Feld, wird null zur¸ckgegeben.
+	 * Diese Methode ermittelt zu einer uebergebenen Feldnummer, die eventuell auf diesem Feld
+	 * stehende Figur und gibt diese zurueck. Steht keine Figur auf dem Feld, wird null zurueckgegeben.
 	 */
 	public Figur figurErmitteln(int feldnummer)
 	{
@@ -281,45 +324,72 @@ public class MainController implements AnimationFertigListener
 		{
 			for (int c = 0; c < 4; c++)
 			{
-				if (figur[i][c].getAbsolutePosition(0) == feldnummer) {return figur[i][c];}
+				if (figur[i][c].getAbsolutePosition(0) == feldnummer) {return figur[i][c];}// zurueckgeben der gefundenen Figur
 			}
 		}
-		return null;
+		return null;// zurueckgeben von null, wenn keine absolute Figurposition der feldnummer entsprochen hat
 	}
+	/*
+	 * Methode zum Zuruecksetzen aller Felder in deaktivierten Zustand, keine Ausfuehrung eines Handlers moeglich
+	 */
 	public void disableFelder()
 	{
 		for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(true); zielFelderBlau[s].setDisable(false);}
 		for (int i = 0; i < 40; i++) {felder[i].setDisable(true);}
 	}
+	/*
+	 * Methode zum Pruefen und Ausfuehren des Spielzugs eines menschlichen Spielers (Spieler 1)
+	 * Bei nicht legitimen Zuegen, erfolgt die Ausgabe von entsprechenden Hinweisen.
+	 */
 	public void zugMensch(Figur f)
 	{
 		/*
-		 * Testen, ob der Zug auf dem Spielbrett ueberhaupt zul‰ssig ist
+		 * Testen, ob der Zug auf dem Spielbrett ueberhaupt zulaessig ist
 		 */
 		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)
 		{
+			/*
+			 * Abfrage, ob die Bedingungen fuer ein "Raussetzen" erfuellt sind (sechs gewuerfelt und Figur befindet sich auf dem Startfeld)
+			 */
 			if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == true)
 			{
-				if (figurErmitteln(1) != null && figurErmitteln(1).getFigurSpieler() == 1) {textAusgeben("Erst das Startfeld freimachen.");}
+				/*
+				 * Abfrage, ob das Startfeld von einer eigenen Figur besetzt wird
+				 */
+				if (figurErmitteln(1) != null && figurErmitteln(1).getFigurSpieler() == f.getFigurSpieler())
+				{
+					textAusgeben("Erst das Startfeld freimachen.");// Ausgabe eines entsprechenden Hinweises
+				}
 				else
 				{
-					if (figurErmitteln(1) != null && figurErmitteln(1).getFigurSpieler() != 1)
+					/*
+					 * Abfrage, ob das Startfeld von einer anderen Figur besetzt wird
+					 */
+					if (figurErmitteln(1) != null && figurErmitteln(1).getFigurSpieler() != f.getFigurSpieler())
 					{
-						figurErmitteln(1).setGeschlagen(true);
+						figurErmitteln(1).setGeschlagen(true);// d.h. nach dem Zug wird aktualisiereGUI() erneut aufgerufen, um diese Figur zu schlagen
 					}
-					disableFelder();
-					f.neuAufFeldSetzen();
-					aktualisiereGUI(f);
+					/*
+					 * unabhaengig davon, ob jemand geschagen wird -> gewoehnliche Ausfuehrung des Spielzugs
+					 */
+					disableFelder();// Deaktivieren der Felder
+					f.neuAufFeldSetzen();// Aktualisierung der Figurdaten
+					aktualisiereGUI(f);// Aktualisierung des GUI
 				}
 			}
+			/*
+			 * Abfrage, ob die Bedingungen fuer ein "Raussetzen" nur teilweise erfuellt sind (keine sechs gewuerfelt, aber Figur befindet sich auf dem Startfeld)
+			 */
 			else if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == false)
 			{
 				textAusgeben("Kein gueltiger Spielzug.");
-				textAusgeben("Nur bei einer 6 duerfen Sie eine neue Figur raussetzen.");
-				wuerfelButton.setDisable(false);
+				textAusgeben("Nur bei einer 6 duerfen Sie eine neue Figur raussetzen.");// Ausgabe eines entsprechenden Hinweises
 			}
 			else
 			{
+				/*
+				 * Abfrage, ob das Zielfeld des Zuges von einer eigenen Figur besetzt wird
+				 */
 				if (figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()) != null &&
 					figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()).getFigurSpieler() == 1)
 				{
@@ -327,19 +397,29 @@ public class MainController implements AnimationFertigListener
 				}
 				else
 				{
+					/*
+					 * Abfrage, ob das Startfeld von einer anderen Figur besetzt wird
+					 */
 					if (figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()) != null &&
 						figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()).getFigurSpieler() != 1)
 					{
 						figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()).setGeschlagen(true);
 					}
-					disableFelder();
-					f.Setzen(wuerfel.getAugenzahl());
-					aktualisiereGUI(f);
+					/*
+					 * unabhaengig davon, ob jemand geschagen wird -> gewoehnliche Ausfuehrung des Spielzugs
+					 */
+					disableFelder();// Deaktivieren der Felder
+					f.Setzen(wuerfel.getAugenzahl());// Aktualisierung der Figurdaten
+					aktualisiereGUI(f);// Aktualisierung des GUI
 				}
 			}
 		}
 		else {textAusgeben("Kein gueltiger Spielzug.");}
 	}
+	/*
+	 * Der Aufbau dieser Methode ist aehnlich dem, der Handler-Methode des WuerfelStackPanes.
+	 * 
+	 */
 	public void wuerfelnKI(Spieler s)
 	{
 		int z;
@@ -347,88 +427,115 @@ public class MainController implements AnimationFertigListener
 		{
 			z = 0; // Zaehlvariable fuer Figuren in den Startfeldern
 			wuerfel.wuerfeln();
-			textAusgeben("Spieler " + s.getSpielernummer() + " hat eine " + wuerfel.getAugenzahl() + " gewuerfelt.");
+			wuerfelAnzeigen();
+			textAusgeben("Spieler " + s.getSpielernummer() + " hat eine " + wuerfel.getAugenzahl() + " gewuerfelt.");// Ausgabe eines entsprechenden Hinweises
 			for (int i = 0; i < 4; i++) {if (figur[s.getSpielernummer() - 1][i].getFigurPosition() == 0) {z++;}}
-			if (z == 4 && wuerfel.sechsGewuerfelt() == true) // wenn alle Figuren in Startfeldern und Augenzahl = 6
+			/*
+			 * Ermitteln, ob der Zug bereits beendet wird, ohne ein Figur zu setzen
+			 * d.h. 3 mal keine sechs, wenn alle Figuren in den Startfeldern stehen (z=4)
+			 */
+			if (z == 4 && wuerfel.sechsGewuerfelt() == true)// Abfrage, ob alle Figuren in den Startfeldern stehen und Augenzahl = 6 ist
 			{
 				zugKI(s);
 				return;
 			}
 		}
-		while (z == 4 && wuerfel.getWurfanzahl() < 3);
+		while (z == 4 && wuerfel.getWurfanzahl() < 3); // dreimaliges Wuerfeln erlaubt, wenn alle Figuren in den Startfeldern stehen (z=4)
 		if (z == 4 && wuerfel.getWurfanzahl() >= 3) {zugEnde();}
 		else {zugKI(s);}
 	}
 	public void zugKI(Spieler s)
 	{
+		/*
+		 * Ueberpruefen, ob eine Situation ohne moegliche Ausfuehrung eines legitimen Spielzugs entsteht
+		 */
 		int n = 0;
 		for (int i = 0; i < 4; i++)
 		{
-			if (zugPruefen(figur[s.getSpielernummer() - 1][i]) == false) {n++;}
+			if (zugPruefen(figur[s.getSpielernummer() - 1][i]) == false) {n++;}// jede Figur des Spielers auf einen moeglichen Zug testen
 		}
-		if (n == 4)
+		if (n == 4)// wenn kein Zug moeglich (n=4)
 		{
-			textAusgeben("Spieler " + s.getSpielernummer() + " muss aussetzen.");
+			textAusgeben("Spieler " + s.getSpielernummer() + " muss aussetzen.");// Ausgabe eines entsprechenden Hinweises
 			zugEnde();
 		}
-		int r = (int)(Math.random() * 4);
-		while (zugPruefen(figur[s.getSpielernummer() - 1][r]) == false)
+		/*
+		 * Wenn bekannt ist, das mindestens ein Zug moeglich ist, erfolgt eine zufaellige Auswahl dieser moeglichen Zuege.
+		 */
+		int r = (int)(Math.random() * 4);// r = zufaellige Zahl zwischen 0 und 3
+		while (zugPruefen(figur[s.getSpielernummer() - 1][r]) == false)// Verlassen, bei einem gefundenen moeglichen Zug
 		{
-			r = (int)(Math.random() * 4);
+			r = (int)(Math.random() * 4);// erneuter Versuch
 		}
-		if (figur[s.getSpielernummer() - 1][r].getFigurPosition() == 0)
+		/*
+		 * Die KI muss an dieser Stelle nicht pruefen, ob eine eigene Figur auf dem Zielfeld dieses Zuges steht.
+		 * Da zugPruefen() "true" zurueckgegeben hat, ist dies bereits ausgeschlossen.
+		 */
+		if (figur[s.getSpielernummer() - 1][r].getFigurPosition() == 0)//Abrage, ob die Figur im Startfeld steht
 		{
+			/*
+			 * Ist das fuer den Spieler entsprechende Startfeld nicht leer, wird die darauf stehende Figur geschlagen.
+			 */
 			if (s.getSpielernummer() == 2) {if (figurErmitteln(11) != null) {figurErmitteln(11).setGeschlagen(true);}}
 			if (s.getSpielernummer() == 3) {if (figurErmitteln(21) != null) {figurErmitteln(21).setGeschlagen(true);}}
 			if (s.getSpielernummer() == 4) {if (figurErmitteln(31) != null) {figurErmitteln(31).setGeschlagen(true);}}
+			/*
+			 * unabhaengig davon, ob jemand geschagen wurde -> gewoehnliche Ausfuehrung des Spielzugs
+			 */
 			figur[s.getSpielernummer() - 1][r].neuAufFeldSetzen(); aktualisiereGUI(figur[s.getSpielernummer() - 1][r]);
 		}
 		else
 		{
+			/*
+			 * Ist das Zielfeld dieses Zuges nicht leer, wird die darauf stehende Figur geschlagen.
+			 */
 			if (figurErmitteln(figur[s.getSpielernummer() - 1][r].getAbsolutePosition(wuerfel.getAugenzahl())) != null)
 			{
 				figurErmitteln(figur[s.getSpielernummer() - 1][r].getAbsolutePosition(wuerfel.getAugenzahl())).setGeschlagen(true);
 			}
+			/*
+			 * unabhaengig davon, ob jemand geschagen wurde -> gewoehnliche Ausfuehrung des Spielzugs
+			 */
 			figur[s.getSpielernummer() - 1][r].Setzen(wuerfel.getAugenzahl()); aktualisiereGUI(figur[s.getSpielernummer() - 1][r]);
 		}
 	}
 	/*
-	 * Testen, ob der Zug mit der uebergebenen Figur zul‰ssig ist
-	 * zugPruefen liefert false, wenn der Zug durch die Spielregeln verboten ist
+	 * Die Methode zugPruefen() testet, ob der Zug fuer die uebergebenen Figur zulaessig ist.
+	 * zugPruefen() liefert "false", wenn der Zug durch die Spielregeln verboten ist, sonst "true"
 	 */
 	public boolean zugPruefen(Figur f)
 	{
-		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)
+		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)// Abfrage ob der Zug ueber das Spielfeld hinaus gehen wuerde
 		{
-			if (f.getFigurPosition() == 0)
+			if (f.getFigurPosition() == 0)// Abfrage, ob sich die Figur in den Startfeldern befinden
 			{
-				if (wuerfel.getAugenzahl() != 6) {return false;}
+				if (wuerfel.getAugenzahl() != 6) {return false;}// Abfrage, ob eine sechs gewuerfelt wurde, sonst zurueckgeben von "false"
 				else
 				{
 					/*
-					 * testen, ob vor der Spielerbasis eine eigene Figur steht
+					 * Testen, ob vor der Spielerbasis eine eigene Figur steht
 					 */
 					for (int i = 0; i < 4; i++)
 					{
 							if (figur[f.getFigurSpieler() - 1][i].getFigurPosition() == 1) {return false;}
 					}
-//					if (f.getFigurSpieler() == 2) {if (figurErmitteln(11) != null && figurErmitteln(11).getFigurSpieler() == 2) {return false;}}
-//					if (f.getFigurSpieler() == 3) {if (figurErmitteln(21) != null && figurErmitteln(21).getFigurSpieler() == 3) {return false;}}
-//					if (f.getFigurSpieler() == 4) {if (figurErmitteln(31) != null && figurErmitteln(31).getFigurSpieler() == 4) {return false;}}
 					return true;
 				}	
 			}
 			else
 			{
+				/*
+				 * Abfrage, ob das Zielfeld dieses Zuges nicht leer ist und darauf eine eigene Figur steht
+				 */
 				if (figurErmitteln(f.getAbsolutePosition(wuerfel.getAugenzahl())) != null &&
-						figurErmitteln(f.getAbsolutePosition(wuerfel.getAugenzahl())).getFigurSpieler() == f.getFigurSpieler()) {return false;}
+					figurErmitteln(f.getAbsolutePosition(wuerfel.getAugenzahl())).getFigurSpieler() == f.getFigurSpieler()) {return false;}
 				else {return true;}
 			}
 		}
 		return false;
 	}
 	/*
-	 * Aufruf von zugInit() fuer den Spielers, der als n‰chstes an der Reihe ist
+	 * Diese Methode ruft zugInit() fuer den Spieler auf, der als naechstes an der Reihe ist.
 	 */
 	public void zugEnde()
 	{
@@ -436,17 +543,31 @@ public class MainController implements AnimationFertigListener
 		{
 			if (spieler[i].getIstAmZug() == true)
 			{
+				/*
+				 * Die Spieler sind wie folgt an der Reihe: 1,2,3,4,1,usw.
+				 */
 				if (spieler[i].getSpielernummer() == 4) {zugInit(spieler[0]); break;}
-			else {zugInit(spieler[i + 1]); break;}
+				else {zugInit(spieler[i + 1]); break;}
 			}
 		}
+	}
+	/*
+	 * Methode fuer die Wuerfelanzeige in der Mitte des Spielfelds
+	 */
+	public void wuerfelAnzeigen()
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			wuerfelAnzeige[i].setVisible(false);// Alle Panes werden zunaechst ausgeblendet.
+		}
+		wuerfelAnzeige[wuerfel.getAugenzahl() - 1].setVisible(true);// Das der Augenzahl entsprechende Pane wird sichtbar gemacht.
 	}
 	/*
 	 * Methode fuer Textausgabe in der Seitenleiste
 	 */
 	public void textAusgeben(String s)
 	{
-		textAusgabe.appendText(s + "\n");
+		textAusgabe.appendText(s + "\n");// Bei einer Textausgabe wird jedesmal im Anschluss ein Zeilenumbruch eingefuegt.
 	}
 	/*
 	 * Methode zum Zuruecksetzen der Textausgabe
@@ -456,13 +577,13 @@ public class MainController implements AnimationFertigListener
 		textAusgabe.setText("");
 	}
 	/*
-	 * Methode, die ausgef¸hrt wird, sobald der animationUpdate-Thread beendet ist
+	 * Dies ist eine Listener-Methode, die ausgefuehrt wird, sobald der animationUpdate-Thread beendet ist.
 	 */
 	@Override
-	public void auslˆsenAnimationFertig(Thread thread)
+	public void ausloesenAnimationFertig(Thread thread)
 	{
 		/*
-		 * Ermitteln, ob eine Figur geschlagen werden muss 
+		 * Ermitteln, ob eine Figur geschlagen werden muss (geschlagen=true)
 		 */
 		for(int i = 0; i < 4; i++)
 		{
@@ -470,14 +591,14 @@ public class MainController implements AnimationFertigListener
 			{
 				if (figur[i][c].getGeschlagen() == true)
 				{
-					figur[i][c].schlagen();
-					figur[i][c].setGeschlagen(false);
-					if (figur[i][c].getFigurSpieler() == 1) {textAusgeben("Ihre Figur wurde geschlagen!");}
-					for (int n = 2; n < 5; n++)
+					figur[i][c].schlagen();// Aktualisierung der Figurdaten
+					figur[i][c].setGeschlagen(false);// Zuruecksetzen der "geschlagen"-Eigenschaft auf "false"
+					if (figur[i][c].getFigurSpieler() == 1) {textAusgeben("Ihre Figur wurde geschlagen!");}// Ausgabe eines entsprechenden Hinweises
+					for (int n = 2; n < 5; n++)// Ausgabe eines entsprechenden Hinweises
 					{
 						if (figur[i][c].getFigurSpieler() == n) {textAusgeben("Eine Figur von Spieler " + n + " wurde geschlagen!");}
 					}
-					aktualisiereGUI(figur[i][c]);
+					aktualisiereGUI(figur[i][c]);// Aktualisierung des GUI
 					return;
 				}
 			}
@@ -490,26 +611,30 @@ public class MainController implements AnimationFertigListener
 			if (spieler[i].getIstAmZug() == true)
 			{
 				/*
-				 * testen, ob der Spieler durch diesen Zug gewonnen hat
+				 * Testen, ob der Spieler durch diesen Zug gewonnen hat
 				 */
 				int z = 0;
 				for (int c = 4; c < 0; c++)
 				{
 					if (figur[spieler[i].getSpielernummer()][c].getInZielFeldern() == true) {z++;}
 				}
-				if (z == 4)
+				if (z == 4)// Abfrage, ob alle Figuren in den Zielfeldern stehen
 				{
+					/*
+					 * Ausgabe eines entsprechenden Hinweises
+					 * Ende des Spiels
+					 */
 					if (spieler[i].getSpielernummer() == 1) {textAusgeben("Sie haben gewonnen."); textAusgeben("Herzlichen Glueckwunsch!");}
 					else {textAusgeben("Sie haben verloren."); textAusgeben("Spieler " + spieler[i].getSpielernummer() + " ist der Sieger.");}
 				}
 				else
 				{
-					if (wuerfel.sechsGewuerfelt() == true)
+					if (wuerfel.sechsGewuerfelt() == true)// Abfrage, ob erneut gewuerfelt werden darf (sechs gewuerfelt)
 					{
-						if (spieler[i].getSpielernummer() == 1) {wuerfelButton.setDisable(false); break;}
+						if (spieler[i].getSpielernummer() == 1) {wuerfelStackPane.setDisable(false); break;}
 						else {wuerfelnKI(spieler[i]); break;}
 					}
-					else {zugEnde(); break;}
+					else {zugEnde(); break;}// Beenden des Zuges
 				}
 			}
 		}
@@ -520,23 +645,31 @@ public class MainController implements AnimationFertigListener
 	public void aktualisiereGUI(Figur f)
 	{
 		/*
-		 * testen auf eventuelle Aenderungen
+		 * Testen auf eventuelle Aenderungen
+		 * 
+		 * Hinweis:
+		 * Sollte aktualisiereGUI() fuer eine Figur aufgerufen werden, fuer die sich nichts
+		 * geaendert hat, wird die Setzanimation nicht erneut ausgefuehrt.
+		 * Diese Fall sollte aber in der aktuellen Version der Anwendung nicht auftreten.
 		 */
 		if (f.getAlteFigurPosition() != f.getFigurPosition());
 		/*
-		 * aktualisieren der GUI Circle Elemente fuer Figur f
+		 * aktualisieren der JavaFX Circle Elemente fuer Figur f
 		 */
 		{
 			AnimationThread animationUpdate = new AnimationThread()
 			{
-				private Paint nextColor;
+				private Paint nextColor;// Zwischenspeicher fuer eine zeitweise ueberschriebene Farbe (Setzen einer Figur "ueber" eine andere)
 				public void doRun()
 				{
 					/*
-					 * testen, ob Figur f geschlagen, d.h. in die Basis zurueckgesetzt wird (relative Position = 0)
+					 * Testen, ob Figur f geschlagen, d.h. in die Basis zurueckgesetzt wird (relative Figurposition = 0)
 					 */
 					if (f.getFigurPosition() == 0)
 					{
+						/*
+						 * Einblenden eines Circles im entsprechenden Startfeld
+						 */
 						if (f.getFigurSpieler() == 1)
 						{
 							for (int i = 0; i < 4; i++)
@@ -567,10 +700,14 @@ public class MainController implements AnimationFertigListener
 						}
 					}
 					/*
-					 * testen, ob Figur f aus der Basis auf das erste Feld gesetzt wird (relative Position = 1)
+					 * Testen, ob Figur f aus der Basis auf das erste Feld gesetzt wird (relative Figurposition = 1)
 					 */
 					else if (f.getFigurPosition() == 1)
 					{
+						/*
+						 * Ausblenden eines bereits sichtbaren Circles in den Startfeldern
+						 * Einblenden des Circles auf der fuer den Spieler entsprechenden ersten Feldes
+						 */
 						if (f.getFigurSpieler() == 1)
 						{
 							for (int i = 0; i < 4; i++)
@@ -613,7 +750,22 @@ public class MainController implements AnimationFertigListener
 					 */
 					else
 					{
-						if (f.getFigurSpieler() == 1)
+						/*
+						 * Es wird fuer jeden Spieler entsprechend das aktuelle Feld ausgeblendet und das naechste Feld
+						 * auf dem Spielplan sichtbar gemacht. Die Anzahl dieser Schritte ergibt sich aus der Differenz
+						 * von "alteFigurPosition" und "figurPosition". Nach jedem Schritt wartet der Thread 250 ms.
+						 * In "count" wird mitgezaehlt wie oft insgesamt hochgezaehlt wurde.
+						 * In "pos" wird je nach Spieler rechnerisch die aktuelle Position im Array "felder[]" ermittelt.
+						 * 
+						 * Das Prinzip ist bei allen Farben das Gleiche. Alle zuberuecksichtigenden Faelle werden
+						 * entsprechend behandelt.
+						 * z.B. 	- (1) Verlassen des Arrays "felder[]" und betreten des spielereigenen zielFelder-Arrays
+						 * 			- (2) Setzen von "felder[39]" auf "felder[0]"
+						 * 			- (3) Setzen einer Figur "ueber" eine andere hinweg, sodass diese kurzzeitig nicht zusehen ist
+						 * 
+						 * Bei Spieler 1 (blau) entfaellt der Fall (2), da felder[39] das letzte Feld vor den Zielfeldern ist.
+						 */
+						if (f.getFigurSpieler() == 1)// blau
 						{
 							int pos, count = 0;
 							for (int i = f.getAlteFigurPosition(); i < f.getFigurPosition(); i++)
@@ -626,20 +778,20 @@ public class MainController implements AnimationFertigListener
 									else {zielFelderBlau[pos - 40].setVisible(false);}
 									f.setInZielFeldern(true);
 									zielFelderBlau[pos - 39].setFill(Color.web("3daeff99"));
-									zielFelderBlau[pos - 39].setVisible(true);
+									zielFelderBlau[pos - 39].setVisible(true);// (1)
 									try {Thread.sleep(250);}
 									catch (InterruptedException e) {e.printStackTrace();}
 									count++;
 								}
 								else
 								{
-									if (nextColor != null)
+									if (nextColor != null)// (3)
 									{
 										felder[pos].setFill(nextColor);
 										nextColor = null;
 									}
 									else {felder[pos].setVisible(false);}
-									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}
+									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}// (3)
 									felder[pos + 1].setFill(Color.web("3daeff99"));
 									felder[pos + 1].setVisible(true);
 									try {Thread.sleep(250);}
@@ -648,7 +800,7 @@ public class MainController implements AnimationFertigListener
 								}
 							}
 						}
-						if (f.getFigurSpieler() == 2)
+						if (f.getFigurSpieler() == 2)// rot
 						{
 							int pos, count = 0;
 							for (int i = f.getAlteFigurPosition(); i < f.getFigurPosition(); i++)
@@ -661,35 +813,35 @@ public class MainController implements AnimationFertigListener
 									else {zielFelderRot[pos - 10].setVisible(false);}
 									f.setInZielFeldern(true);
 									zielFelderRot[pos - 9].setFill(Color.web("ff4343"));
-									zielFelderRot[pos - 9].setVisible(true);
+									zielFelderRot[pos - 9].setVisible(true);// (1)
 									try {Thread.sleep(250);}
 									catch (InterruptedException e) {e.printStackTrace();}
 									count++;
 								}
 								else if (pos == 39)
 								{
-									if (nextColor != null)
+									if (nextColor != null)// (3)
 									{
 										felder[pos].setFill(nextColor);
 										nextColor = null;
 									}
 									else {felder[pos].setVisible(false);}
-									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}
+									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}// (3)
 									felder[0].setFill(Color.web("ff4343"));
-									felder[0].setVisible(true);
+									felder[0].setVisible(true);// (2)
 									try {Thread.sleep(250);}
 									catch (InterruptedException e) {e.printStackTrace();}
 									count++;
 								}
 								else
 								{										
-									if (nextColor != null)
+									if (nextColor != null)// (3)
 									{
 										felder[pos].setFill(nextColor);
 										nextColor = null;
 									}
 									else {felder[pos].setVisible(false);}
-									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}							
+									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}// (3)
 									felder[pos + 1].setFill(Color.web("ff4343"));
 									felder[pos + 1].setVisible(true);
 									try {Thread.sleep(250);}
@@ -698,7 +850,7 @@ public class MainController implements AnimationFertigListener
 								}
 							}						
 						}
-						if (f.getFigurSpieler() == 3)
+						if (f.getFigurSpieler() == 3)// gruen
 						{
 							int pos, count = 0;
 							for (int i = f.getAlteFigurPosition(); i < f.getFigurPosition(); i++)
@@ -711,35 +863,35 @@ public class MainController implements AnimationFertigListener
 									else {zielFelderGruen[pos - 20].setVisible(false);}
 									f.setInZielFeldern(true);
 									zielFelderGruen[pos - 19].setFill(Color.web("83d04f"));
-									zielFelderGruen[pos - 19].setVisible(true);
+									zielFelderGruen[pos - 19].setVisible(true);// (1)
 									try {Thread.sleep(250);}
 									catch (InterruptedException e) {e.printStackTrace();}
 									count++;
 								}
 								else if (pos == 39)
 								{
-									if (nextColor != null)
+									if (nextColor != null)// (3)
 									{
 										felder[pos].setFill(nextColor);
 										nextColor = null;
 									}
 									else {felder[pos].setVisible(false);}
-									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}
+									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}// (3)
 									felder[0].setFill(Color.web("83d04f"));
-									felder[0].setVisible(true);
+									felder[0].setVisible(true);// (2)
 									try {Thread.sleep(250);}
 									catch (InterruptedException e) {e.printStackTrace();}
 									count++;
 								}
 								else
 								{										
-									if (nextColor != null)
+									if (nextColor != null)// (3)
 									{
 										felder[pos].setFill(nextColor);
 										nextColor = null;
 									}
 									else {felder[pos].setVisible(false);}
-									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}							
+									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}// (3)
 									felder[pos + 1].setFill(Color.web("83d04f"));
 									felder[pos + 1].setVisible(true);
 									try {Thread.sleep(250);}
@@ -748,7 +900,7 @@ public class MainController implements AnimationFertigListener
 								}
 							}
 						}
-						if (f.getFigurSpieler() == 4)
+						if (f.getFigurSpieler() == 4)// gelb
 						{
 							int pos, count = 0;
 							for (int i = f.getAlteFigurPosition(); i < f.getFigurPosition(); i++)
@@ -761,35 +913,35 @@ public class MainController implements AnimationFertigListener
 									else {zielFelderGelb[pos - 30].setVisible(false);}
 									f.setInZielFeldern(true);
 									zielFelderGelb[pos - 29].setFill(Color.web("fff438"));
-									zielFelderGelb[pos - 29].setVisible(true);
+									zielFelderGelb[pos - 29].setVisible(true);// (1)
 									try {Thread.sleep(250);}
 									catch (InterruptedException e) {e.printStackTrace();}
 									count++;
 								}
 								else if (pos == 39)
 								{
-									if (nextColor != null)
+									if (nextColor != null)// (3)
 									{
 										felder[pos].setFill(nextColor);
 										nextColor = null;
 									}
 									else {felder[pos].setVisible(false);}
-									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}
+									if (felder[0].isVisible() == true) {nextColor = felder[0].getFill();}// (3)
 									felder[0].setFill(Color.web("fff438"));
-									felder[0].setVisible(true);
+									felder[0].setVisible(true);// (2)
 									try {Thread.sleep(250);}
 									catch (InterruptedException e) {e.printStackTrace();}
 									count++;
 								}
 								else
 								{
-									if (nextColor != null)
+									if (nextColor != null)// (3)
 									{
 										felder[pos].setFill(nextColor);
 										nextColor = null;
 									}
 									else {felder[pos].setVisible(false);}
-									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}							
+									if (felder[pos + 1].isVisible() == true) {nextColor = felder[pos + 1].getFill();}// (3)
 									felder[pos + 1].setFill(Color.web("fff438"));
 									felder[pos + 1].setVisible(true);
 									try {Thread.sleep(250);}
@@ -800,15 +952,18 @@ public class MainController implements AnimationFertigListener
 							}						
 						}
 					}
+					/*
+					 * 500ms warten
+					 */
 					try {
-						AnimationThread.sleep(1000);
+						AnimationThread.sleep(500);
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
 				}
 			};
-			animationUpdate.addListener(this);
-			animationUpdate.start();
+			animationUpdate.addListener(this);// Hinzufuegen des Listeners
+			animationUpdate.start();// Ausfuehren von animationUpdate
 		}
 	}
 }

@@ -1,36 +1,73 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-/*
-#mainHBox{
-	-fx-background-image: url("http://science-all.com/images/wallpapers/wood-wallpaper/wood-wallpaper-9.jpg");
+
+/* Holztextur von Spielbrett und Hintergrund */
+#mainAnchorPane
+{
+	-fx-background-image: url("../../res/v_wood.jpg");
 	-fx-background-repeat: stretch;
-	-fx-background-size: 800 650;
-	-fx-background-position: bottom;
+	-fx-background-size: 850 700;
 }
-*/
-#spielfeldAnchorPane{
-	-fx-background-image: url("http://science-all.com/images/wallpapers/wood-wallpaper/wood-wallpaper-9.jpg");
+#spielfeldAnchorPane
+{
+	-fx-background-image: url("../../res/v_wood.jpg");
 	-fx-background-repeat: stretch;
 	-fx-background-size: 600 600;
-	/*http://pic.1fotonin.com/data/wallpapers/10/WDF_588806.jpg
-	 * http://wallpapers-best.com/uploads/posts/2015-09/25_white_abstract.jpg*/
 }
-#leisteVBox{
-	-fx-background-image: url("http://science-all.com/images/wallpapers/wood-wallpaper/wood-wallpaper-9.jpg");
-	-fx-background-repeat: stretch;
-	-fx-background-size: 700 600;
+
+/* sechs Seiten des Würfels und eine Seite mit der Beschriftung "Würfeln" */
+#wuerfelPaneInit
+{
+	-fx-background-image: url("../../res/wuerfel_init.png");
+	-fx-background-size: 60 60;
 }
-.text-area {
+#wuerfelPane1
+{
+	-fx-background-image: url("../../res/wuerfel_1.png");
+	-fx-background-size: 60 60;
+}
+#wuerfelPane2
+{
+	-fx-background-image: url("../../res/wuerfel_2.png");
+	-fx-background-size: 60 60;
+}
+#wuerfelPane3
+{
+	-fx-background-image: url("../../res/wuerfel_3.png");
+	-fx-background-size: 60 60;
+}
+#wuerfelPane4
+{
+	-fx-background-image: url("../../res/wuerfel_4.png");
+	-fx-background-size: 60 60;
+}
+#wuerfelPane5
+{
+	-fx-background-image: url("../../res/wuerfel_5.png");
+	-fx-background-size: 60 60;
+}
+#wuerfelPane6
+{
+	-fx-background-image: url("../../res/wuerfel_6.png");
+	-fx-background-size: 60 60;
+}
+
+/* TextArea zur Ausgabe mit ausgeblendeter Scrollleiste */
+.text-area
+{
 	-fx-background-color: rgba(53,89,119,0.0);
 	-fx-text-fill: rgb(0,0,0)
 }
-.text-area .scroll-pane {
+.text-area .scroll-pane
+{
 	-fx-background-color: transparent;
 	-fx-hbar-policy : never;
 	-fx-vbar-policy : never
 }
-.text-area .scroll-pane .viewport{
+.text-area .scroll-pane .viewport
+{
 	-fx-background-color: transparent;
 }
-.text-area .scroll-pane .content{
+.text-area .scroll-pane .content
+{
 	-fx-background-color: transparent;
 }
