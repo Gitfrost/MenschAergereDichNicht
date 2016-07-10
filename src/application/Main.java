@@ -6,9 +6,8 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 
-/*
+/**
  * Die Klasse Main beinhaltet die start-Methode fuer die JavaFX Anwendung.
- * 
  * @author Lucas Johns
  * @version 1.0
  */
@@ -19,7 +18,7 @@ public class Main extends Application
 	{
 		try
 		{
-			/*
+			/**
 			 * Unter Verwendung von SceneBuilder wurde die "MainWindow.fxml" fuer
 			 * den Aufbau der JavaFX Anwendung erstellt. Die darin enthaltene Hierarchie
 			 * wird mit FXMLLoader importiert.
@@ -28,7 +27,7 @@ public class Main extends Application
 			loader.setLocation(Main.class.getResource("MainWindow.fxml"));
 			AnchorPane root = loader.load();// Ein AnchorPane dient als root, welches alle weiteren Elemente beinhaltet.
 			Scene scene = new Scene(root);
-			/*
+			/**
 			 * Die Datei "application.css" beinhaltet CSS Styles fuer einige Elemente der Anwendung.
 			 */
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

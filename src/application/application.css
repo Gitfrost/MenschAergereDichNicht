@@ -3,13 +3,13 @@
 /* Holztextur von Spielbrett und Hintergrund */
 #mainAnchorPane
 {
-	-fx-background-image: url("../../res/v_wood.jpg");
+	-fx-background-image: url("../../res/holz.png");
 	-fx-background-repeat: stretch;
 	-fx-background-size: 850 700;
 }
 #spielfeldAnchorPane
 {
-	-fx-background-image: url("../../res/v_wood.jpg");
+	-fx-background-image: url("../../res/holz.png");
 	-fx-background-repeat: stretch;
 	-fx-background-size: 600 600;
 }

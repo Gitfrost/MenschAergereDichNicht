@@ -1,14 +1,19 @@
 package application;
 
-/*
- * Für dieses Interface und die Klasse AnimationFertigListener diente folgende Quelle als Hilfestellung:
+/**
+ * Dieses Interface wird in der MainController Klasse implementiert.
+ * Folgende Quelle diente als Hilfestellung:
  * 
- * http://stackoverflow.com/questions/702415/how-to-know-if-other-threads-have-finished#
+ * <a href="http://stackoverflow.com/questions/702415/how-to-know-if-other-threads-have-finished">Link</a>
+ * 
+ * @author Lucas Johns
+ * @version 1.0
  */
-public interface AnimationFertigListener// Dieses Interface wird in der MainController Klasse implementiert.
+public interface AnimationFertigListener
 {
-	/*
-	 * Diese Methode wird ausgeführt, sobald der AnimationThread abgeschlossen ist.
+	/**
+	 * Diese Methode wird ausgefuehrt, sobald der AnimationThread abgeschlossen ist.
+	 * @param thread Thread, der nach seiner Beendigung den Listener ausloest
 	 */
 	void ausloesenAnimationFertig(final Thread thread);
 }

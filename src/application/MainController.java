@@ -10,27 +10,27 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-/*
+/**
  * Diese Klasse ist die Hauptklasse fuer das Spielfeld und alle dazugehoerigen Elemente.
  * Sie dient auﬂerdem als Controller fuer die Oberflaeche.
- * 
  * @author Lucas Johns
+ * @version 1.0
  */
 public class MainController implements AnimationFertigListener
 {
-	/*
+	/**
 	 * 4 am Spieler beteiligte Spieler
 	 */
 	private Spieler[] spieler = new Spieler[4];
-	/*
+	/**
 	 * Array fuer Figuren (16)
 	 */
 	private Figur[][] figur = new Figur[4][4];
-	/*
+	/**
 	 * 1 am Spiel beteiligter Wuerfel
 	 */
 	private Wuerfel wuerfel = new Wuerfel();
-	/*
+	/**
 	 * Anlegen der einzelnen Felder (JavaFX Circles)
 	 */
 	@FXML private Circle f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20,
@@ -39,42 +39,42 @@ public class MainController implements AnimationFertigListener
 						 startGruen1, startGruen2, startGruen3, startGruen4, startGelb1, startGelb2, startGelb3, startGelb4,
 						 zielBlau1, zielBlau2, zielBlau3, zielBlau4, zielRot1, zielRot2, zielRot3, zielRot4,
 						 zielGruen1, zielGruen2, zielGruen3, zielGruen4, zielGelb1, zielGelb2, zielGelb3, zielGelb4;
-	/*
+	/**
 	 * Anlegen einer TextArea, die in der Seitenleiste der Textausgabe dient
 	 */
 	@FXML private TextArea textAusgabe;
-	/*
+	/**
 	 * Anlegen der Panes fuer die Wuerfelausgabe (6 Seiten)
 	 */
 	@FXML private Pane wuerfelPane1, wuerfelPane2, wuerfelPane3, wuerfelPane4, wuerfelPane5, wuerfelPane6, wuerfelPaneInit;
-	/*
+	/**
 	 * Anlegen eines Buttons 'Wuerfeln' fuer die Seitenleiste
 	 */
 	@FXML private StackPane wuerfelStackPane;
-	/*
+	/**
 	 * Anlegen des Arrays fuer die Spielfelder
 	 */
 	private Circle[] felder = new Circle[40];
-	/*
+	/**
 	 * Anlegen der Arrays fuer Startfelder
 	 */
 	private Circle[] startFelderBlau = new Circle[4];
 	private Circle[] startFelderRot = new Circle[4];
 	private Circle[] startFelderGruen = new Circle[4];
 	private Circle[] startFelderGelb = new Circle[4];
-	/*
+	/**
 	 * Anlegen der Arrays fuer Zielfelder
 	 */
 	private Circle[] zielFelderBlau = new Circle[4];
 	private Circle[] zielFelderRot = new Circle[4];
 	private Circle[] zielFelderGruen = new Circle[4];
 	private Circle[] zielFelderGelb = new Circle[4];
-	/*
+	/**
 	 * Anlegen des Arrays fuer die Wuerfelanzeige
 	 */
 	private Pane[] wuerfelAnzeige = new Pane[6];
-	/*
-	 * handler-Methoden fuer Felder
+	/**
+	 * Handler-Methoden fuer Felder
 	 */
 	@FXML public void handleF0() {zugMensch(figurErmitteln(0));}
 	@FXML public void handleF1() {zugMensch(figurErmitteln(1));}
@@ -121,57 +121,57 @@ public class MainController implements AnimationFertigListener
 	@FXML public void handleF42() {zugMensch(figurErmitteln(42));}
 	@FXML public void handleF43() {zugMensch(figurErmitteln(43));}
 	@FXML public void handleF44() {zugMensch(figurErmitteln(44));}	
-	/*
-	 * neues Spiel wird gestartet, Felder und Figuren werden initialisiert
+	/**
+	 * Methode fuer das Starten eines neuen Spiels und die Initialisierung der Felder, Spieler und Figuren
 	 */
 	@FXML public void handleNeuesSpielMenu()
 	{
 		textLoeschen();// reset der Textausgabe
 		textAusgeben("Initialisiere Spielfeld...");
-		/*
+		/**
 		 * Initialisierung des Arrays mit Spielfeldelementen
 		 */
 		felder[0] = f1; felder[1] = f2; felder[2] = f3; felder[3] = f4; felder[4] = f5; felder[5] = f6; felder[6] = f7; felder[7] = f8; felder[8] = f9; felder [9] = f10;
 		felder[10] = f11; felder[11] = f12; felder[12] = f13; felder[13] = f14; felder[14] = f15; felder[15] = f16; felder[16] = f17; felder[17] = f18; felder[18] = f19; felder[19] = f20;
 		felder[20] = f21; felder[21] = f22; felder[22] = f23; felder[23] = f24; felder[24] = f25; felder[25] = f26; felder[26] = f27; felder[27] = f28; felder[28] = f29; felder[29] = f30;
 		felder[30] = f31; felder[31] = f32; felder[32] = f33; felder[33] = f34; felder[34] = f35; felder[35] = f36; felder[36] = f37; felder[37] = f38; felder[38] = f39; felder[39] = f40;
-		/*
+		/**
 		 * Initialisierung der Arrays mit Startelementen
 		 */
 		startFelderBlau[0] = startBlau1; startFelderBlau[1] = startBlau2; startFelderBlau[2] = startBlau3; startFelderBlau[3] = startBlau4;
 		startFelderRot[0] = startRot1; startFelderRot[1] = startRot2; startFelderRot[2] = startRot3; startFelderRot[3] = startRot4;
 		startFelderGruen[0] = startGruen1; startFelderGruen[1] = startGruen2; startFelderGruen[2] = startGruen3; startFelderGruen[3] = startGruen4;
 		startFelderGelb[0] = startGelb1; startFelderGelb[1] = startGelb2; startFelderGelb[2] = startGelb3; startFelderGelb[3] = startGelb4;
-		/*
+		/**
 		 * Initialisierung der Arrays mit Zielelementen
 		 */
 		zielFelderBlau[0] = zielBlau4; zielFelderBlau[1] = zielBlau3; zielFelderBlau[2] = zielBlau2; zielFelderBlau[3] = zielBlau1;
 		zielFelderRot[0] = zielRot4; zielFelderRot[1] = zielRot3; zielFelderRot[2] = zielRot2; zielFelderRot[3] = zielRot1;
 		zielFelderGruen[0] = zielGruen4; zielFelderGruen[1] = zielGruen3; zielFelderGruen[2] = zielGruen2; zielFelderGruen[3] = zielGruen1;
 		zielFelderGelb[0] = zielGelb4; zielFelderGelb[1] = zielGelb3; zielFelderGelb[2] = zielGelb2; zielFelderGelb[3] = zielGelb1;
-		/*
+		/**
 		 * Initialisierung des Arrays mit Wuerfelelementen
 		 */
 		wuerfelAnzeige[0] = wuerfelPane1; wuerfelAnzeige[1] = wuerfelPane2; wuerfelAnzeige[2] = wuerfelPane3;
 		wuerfelAnzeige[3] = wuerfelPane4; wuerfelAnzeige[4] = wuerfelPane5; wuerfelAnzeige[5] = wuerfelPane6;
-		/*
+		/**
 		 * Initialisieren des Arrays fuer die Figuren
 		 */
 		for (int i = 0; i < 4; i++)
 		{
 			for (int n = 0; n < 4; n++)
 			{
-				figur [i][n] = new Figur(i + 1, n + 1);
+				figur [i][n] = new Figur(i + 1);
 			}
 		}
-		/*
+		/**
 		 * Anlegen der Spieler
 		 */
 		for (int i = 0; i < 4; i++)
 		{
 			spieler[i] = new Spieler(i + 1);
 		}
-		/*
+		/**
 		 * Zuruecksetzen aller Felder in nicht sichtbaren und deaktivierten Zustand
 		 */
 		for (int i = 0; i < felder.length; i++)
@@ -179,7 +179,7 @@ public class MainController implements AnimationFertigListener
 			felder[i].setVisible(false);
 			felder[i].setDisable(true);
 		}
-		/*
+		/**
 		 * Setzen aller Startfelder in sichtbaren Zustand und
 		 * Zuruecksetzen aller Zielfelder in nicht sichtbaren Zustand
 		 */
@@ -194,7 +194,7 @@ public class MainController implements AnimationFertigListener
 			startFelderGelb[i].setVisible(true);
 			zielFelderGelb[i].setVisible(false);
 		}
-		/*
+		/**
 		 * Zuruecksetzen der WuerfelPanes in nicht sichtbaren Zustand
 		 */
 		for (int i = 0; i < 6; i++)
@@ -202,25 +202,25 @@ public class MainController implements AnimationFertigListener
 			wuerfelAnzeige[i].setVisible(false);
 		}
 		wuerfelPaneInit.setVisible(true);// Anzeige des WuerfelPanes mit der Aufschrift "Wuerfeln"
-		/*
+		/**
 		 * Aktualisieren der Textausgabe
 		 */
 		textAusgeben("Neues Spiel gestartet...");
 		textAusgeben("Sie sind Spieler 1 (blau).");
-		/*
+		/**
 		 * Start des Spielzyklus
 		 * Spieler 1 (blau) faengt an
 		 */
 		zugInit(spieler[0]);
 	}
-	/*
+	/**
 	 * Handler-Methode fuer den Menupunkt "Beenden"
 	 */
 	@FXML public void handleBeendenMenu()
 	{
 		Platform.exit();// Beenden der Anwendung
 	}
-	/*
+	/**
 	 * Handler-Methode fuer des Menupunkt "About"
 	 */
 	@FXML public void handleAboutMenu()
@@ -231,8 +231,9 @@ public class MainController implements AnimationFertigListener
 		alert.setContentText("Mensch Aergere Dich Nicht \nVersion 1.0 \n \n Autor: Lucas Johns");
 		alert.showAndWait();
 	}
-	/*
+	/**
 	 * Einleiten eines Spielzuges
+	 * @param s Spieler, fuer den der Zug initiiert werden soll
 	 */
 	public void zugInit(Spieler s)
 	{
@@ -252,7 +253,7 @@ public class MainController implements AnimationFertigListener
 			wuerfelnKI(s);
 		}
 	}
-	/*
+	/**
 	 * Handler-Methode fuer das WuerfelStackPane
 	 */
 	@FXML public void handleWuerfelStackPane()
@@ -262,14 +263,14 @@ public class MainController implements AnimationFertigListener
 		wuerfel.wuerfeln();
 		wuerfelAnzeigen();// Aktualisierung der Wuerfelgrafik
 		textAusgeben("Sie haben eine " + wuerfel.getAugenzahl() + " gewuerfelt.");
-		/*
+		/**
 		 * Aktivieren der Spielfeldelemente, auf denen eine Figur steht
 		 * Handler kann ausgefuehrt werden
 		 */
 		int z = 0;// Zaehlvariable fuer Figuren in den Startfeldern
 		for (int i = 0; i < 4; i++)
 		{
-			/*
+			/**
 			 * Abfrage, in welchem Bereich (startfelder, felder oder zielfelder) die entsprechenden Elemente aktiviert werden muessen
 			 */
 			if (figur[0][i].getFigurPosition() == 0)
@@ -286,7 +287,7 @@ public class MainController implements AnimationFertigListener
 				zielFelderBlau[figur[0][i].getFigurPosition() - 41].setDisable(false);
 			}
 		}
-		/*
+		/**
 		 * Ermitteln, ob der Zug bereits beendet wird, ohne ein Figur zu setzen
 		 * d.h. 3 mal keine sechs, wenn alle Figuren in den Startfeldern stehen (z=4)
 		 */
@@ -297,7 +298,7 @@ public class MainController implements AnimationFertigListener
 		}
 		else
 		{
-			/*
+			/**
 			 * Ueberpruefen, ob eine Situation ohne moegliche Ausfuehrung eines legitimen Spielzugs entsteht
 			 */
 			int p = 0;
@@ -314,9 +315,11 @@ public class MainController implements AnimationFertigListener
 			}
 		}
 	}
-	/*
+	/**
 	 * Diese Methode ermittelt zu einer uebergebenen Feldnummer, die eventuell auf diesem Feld
 	 * stehende Figur und gibt diese zurueck. Steht keine Figur auf dem Feld, wird null zurueckgegeben.
+	 * @param feldnummer Nummer des Feldes, fuer das die Figur ermittelt werden soll
+	 * @return Figur, die gefunden wurde oder null
 	 */
 	public Figur figurErmitteln(int feldnummer)
 	{
@@ -329,7 +332,7 @@ public class MainController implements AnimationFertigListener
 		}
 		return null;// zurueckgeben von null, wenn keine absolute Figurposition der feldnummer entsprochen hat
 	}
-	/*
+	/**
 	 * Methode zum Zuruecksetzen aller Felder in deaktivierten Zustand, keine Ausfuehrung eines Handlers moeglich
 	 */
 	public void disableFelder()
@@ -337,23 +340,24 @@ public class MainController implements AnimationFertigListener
 		for (int s = 0; s < 4; s++) {startFelderBlau[s].setDisable(true); zielFelderBlau[s].setDisable(false);}
 		for (int i = 0; i < 40; i++) {felder[i].setDisable(true);}
 	}
-	/*
-	 * Methode zum Pruefen und Ausfuehren des Spielzugs eines menschlichen Spielers (Spieler 1)
+	/**
+	 * Methode zum Pruefen und Ausfuehren des Spielzugs eines menschlichen Spielers (Spieler 1).
 	 * Bei nicht legitimen Zuegen, erfolgt die Ausgabe von entsprechenden Hinweisen.
+	 * @param f Figur, mit der der Spielzug durchgefuehrt werden soll
 	 */
 	public void zugMensch(Figur f)
 	{
-		/*
+		/**
 		 * Testen, ob der Zug auf dem Spielbrett ueberhaupt zulaessig ist
 		 */
 		if (f.getFigurPosition() + wuerfel.getAugenzahl() <= 44)
 		{
-			/*
+			/**
 			 * Abfrage, ob die Bedingungen fuer ein "Raussetzen" erfuellt sind (sechs gewuerfelt und Figur befindet sich auf dem Startfeld)
 			 */
 			if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == true)
 			{
-				/*
+				/**
 				 * Abfrage, ob das Startfeld von einer eigenen Figur besetzt wird
 				 */
 				if (figurErmitteln(1) != null && figurErmitteln(1).getFigurSpieler() == f.getFigurSpieler())
@@ -362,14 +366,14 @@ public class MainController implements AnimationFertigListener
 				}
 				else
 				{
-					/*
+					/**
 					 * Abfrage, ob das Startfeld von einer anderen Figur besetzt wird
 					 */
 					if (figurErmitteln(1) != null && figurErmitteln(1).getFigurSpieler() != f.getFigurSpieler())
 					{
 						figurErmitteln(1).setGeschlagen(true);// d.h. nach dem Zug wird aktualisiereGUI() erneut aufgerufen, um diese Figur zu schlagen
 					}
-					/*
+					/**
 					 * unabhaengig davon, ob jemand geschagen wird -> gewoehnliche Ausfuehrung des Spielzugs
 					 */
 					disableFelder();// Deaktivieren der Felder
@@ -377,7 +381,7 @@ public class MainController implements AnimationFertigListener
 					aktualisiereGUI(f);// Aktualisierung des GUI
 				}
 			}
-			/*
+			/**
 			 * Abfrage, ob die Bedingungen fuer ein "Raussetzen" nur teilweise erfuellt sind (keine sechs gewuerfelt, aber Figur befindet sich auf dem Startfeld)
 			 */
 			else if (f.getFigurPosition() == 0 && wuerfel.sechsGewuerfelt() == false)
@@ -387,7 +391,7 @@ public class MainController implements AnimationFertigListener
 			}
 			else
 			{
-				/*
+				/**
 				 * Abfrage, ob das Zielfeld des Zuges von einer eigenen Figur besetzt wird
 				 */
 				if (figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()) != null &&
@@ -397,7 +401,7 @@ public class MainController implements AnimationFertigListener
 				}
 				else
 				{
-					/*
+					/**
 					 * Abfrage, ob das Startfeld von einer anderen Figur besetzt wird
 					 */
 					if (figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()) != null &&
@@ -405,7 +409,7 @@ public class MainController implements AnimationFertigListener
 					{
 						figurErmitteln(f.getFigurPosition() + wuerfel.getAugenzahl()).setGeschlagen(true);
 					}
-					/*
+					/**
 					 * unabhaengig davon, ob jemand geschagen wird -> gewoehnliche Ausfuehrung des Spielzugs
 					 */
 					disableFelder();// Deaktivieren der Felder
@@ -416,9 +420,9 @@ public class MainController implements AnimationFertigListener
 		}
 		else {textAusgeben("Kein gueltiger Spielzug.");}
 	}
-	/*
+	/**
 	 * Der Aufbau dieser Methode ist aehnlich dem, der Handler-Methode des WuerfelStackPanes.
-	 * 
+	 * @param s Spieler, fuer den gewuerfelt werden soll
 	 */
 	public void wuerfelnKI(Spieler s)
 	{
@@ -430,7 +434,7 @@ public class MainController implements AnimationFertigListener
 			wuerfelAnzeigen();
 			textAusgeben("Spieler " + s.getSpielernummer() + " hat eine " + wuerfel.getAugenzahl() + " gewuerfelt.");// Ausgabe eines entsprechenden Hinweises
 			for (int i = 0; i < 4; i++) {if (figur[s.getSpielernummer() - 1][i].getFigurPosition() == 0) {z++;}}
-			/*
+			/**
 			 * Ermitteln, ob der Zug bereits beendet wird, ohne ein Figur zu setzen
 			 * d.h. 3 mal keine sechs, wenn alle Figuren in den Startfeldern stehen (z=4)
 			 */
@@ -446,7 +450,7 @@ public class MainController implements AnimationFertigListener
 	}
 	public void zugKI(Spieler s)
 	{
-		/*
+		/**
 		 * Ueberpruefen, ob eine Situation ohne moegliche Ausfuehrung eines legitimen Spielzugs entsteht
 		 */
 		int n = 0;
@@ -459,7 +463,7 @@ public class MainController implements AnimationFertigListener
 			textAusgeben("Spieler " + s.getSpielernummer() + " muss aussetzen.");// Ausgabe eines entsprechenden Hinweises
 			zugEnde();
 		}
-		/*
+		/**
 		 * Wenn bekannt ist, das mindestens ein Zug moeglich ist, erfolgt eine zufaellige Auswahl dieser moeglichen Zuege.
 		 */
 		int r = (int)(Math.random() * 4);// r = zufaellige Zahl zwischen 0 und 3
@@ -467,41 +471,43 @@ public class MainController implements AnimationFertigListener
 		{
 			r = (int)(Math.random() * 4);// erneuter Versuch
 		}
-		/*
+		/**
 		 * Die KI muss an dieser Stelle nicht pruefen, ob eine eigene Figur auf dem Zielfeld dieses Zuges steht.
 		 * Da zugPruefen() "true" zurueckgegeben hat, ist dies bereits ausgeschlossen.
 		 */
 		if (figur[s.getSpielernummer() - 1][r].getFigurPosition() == 0)//Abrage, ob die Figur im Startfeld steht
 		{
-			/*
+			/**
 			 * Ist das fuer den Spieler entsprechende Startfeld nicht leer, wird die darauf stehende Figur geschlagen.
 			 */
 			if (s.getSpielernummer() == 2) {if (figurErmitteln(11) != null) {figurErmitteln(11).setGeschlagen(true);}}
 			if (s.getSpielernummer() == 3) {if (figurErmitteln(21) != null) {figurErmitteln(21).setGeschlagen(true);}}
 			if (s.getSpielernummer() == 4) {if (figurErmitteln(31) != null) {figurErmitteln(31).setGeschlagen(true);}}
-			/*
+			/**
 			 * unabhaengig davon, ob jemand geschagen wurde -> gewoehnliche Ausfuehrung des Spielzugs
 			 */
 			figur[s.getSpielernummer() - 1][r].neuAufFeldSetzen(); aktualisiereGUI(figur[s.getSpielernummer() - 1][r]);
 		}
 		else
 		{
-			/*
+			/**
 			 * Ist das Zielfeld dieses Zuges nicht leer, wird die darauf stehende Figur geschlagen.
 			 */
 			if (figurErmitteln(figur[s.getSpielernummer() - 1][r].getAbsolutePosition(wuerfel.getAugenzahl())) != null)
 			{
 				figurErmitteln(figur[s.getSpielernummer() - 1][r].getAbsolutePosition(wuerfel.getAugenzahl())).setGeschlagen(true);
 			}
-			/*
+			/**
 			 * unabhaengig davon, ob jemand geschagen wurde -> gewoehnliche Ausfuehrung des Spielzugs
 			 */
 			figur[s.getSpielernummer() - 1][r].Setzen(wuerfel.getAugenzahl()); aktualisiereGUI(figur[s.getSpielernummer() - 1][r]);
 		}
 	}
-	/*
+	/**
 	 * Die Methode zugPruefen() testet, ob der Zug fuer die uebergebenen Figur zulaessig ist.
 	 * zugPruefen() liefert "false", wenn der Zug durch die Spielregeln verboten ist, sonst "true"
+	 * @param f Figur, fuer die der Zug ueberprueft werden soll
+	 * @return Durchfuehrbarkeit des geprueften Zuges
 	 */
 	public boolean zugPruefen(Figur f)
 	{
@@ -512,7 +518,7 @@ public class MainController implements AnimationFertigListener
 				if (wuerfel.getAugenzahl() != 6) {return false;}// Abfrage, ob eine sechs gewuerfelt wurde, sonst zurueckgeben von "false"
 				else
 				{
-					/*
+					/**
 					 * Testen, ob vor der Spielerbasis eine eigene Figur steht
 					 */
 					for (int i = 0; i < 4; i++)
@@ -524,7 +530,7 @@ public class MainController implements AnimationFertigListener
 			}
 			else
 			{
-				/*
+				/**
 				 * Abfrage, ob das Zielfeld dieses Zuges nicht leer ist und darauf eine eigene Figur steht
 				 */
 				if (figurErmitteln(f.getAbsolutePosition(wuerfel.getAugenzahl())) != null &&
@@ -534,7 +540,7 @@ public class MainController implements AnimationFertigListener
 		}
 		return false;
 	}
-	/*
+	/**
 	 * Diese Methode ruft zugInit() fuer den Spieler auf, der als naechstes an der Reihe ist.
 	 */
 	public void zugEnde()
@@ -543,7 +549,7 @@ public class MainController implements AnimationFertigListener
 		{
 			if (spieler[i].getIstAmZug() == true)
 			{
-				/*
+				/**
 				 * Die Spieler sind wie folgt an der Reihe: 1,2,3,4,1,usw.
 				 */
 				if (spieler[i].getSpielernummer() == 4) {zugInit(spieler[0]); break;}
@@ -551,7 +557,7 @@ public class MainController implements AnimationFertigListener
 			}
 		}
 	}
-	/*
+	/**
 	 * Methode fuer die Wuerfelanzeige in der Mitte des Spielfelds
 	 */
 	public void wuerfelAnzeigen()
@@ -562,27 +568,28 @@ public class MainController implements AnimationFertigListener
 		}
 		wuerfelAnzeige[wuerfel.getAugenzahl() - 1].setVisible(true);// Das der Augenzahl entsprechende Pane wird sichtbar gemacht.
 	}
-	/*
+	/**
 	 * Methode fuer Textausgabe in der Seitenleiste
+	 * @param s String, der in der TextArea ausgegeben werden soll
 	 */
 	public void textAusgeben(String s)
 	{
 		textAusgabe.appendText(s + "\n");// Bei einer Textausgabe wird jedesmal im Anschluss ein Zeilenumbruch eingefuegt.
 	}
-	/*
+	/**
 	 * Methode zum Zuruecksetzen der Textausgabe
 	 */
 	public void textLoeschen()
 	{
 		textAusgabe.setText("");
 	}
-	/*
+	/**
 	 * Dies ist eine Listener-Methode, die ausgefuehrt wird, sobald der animationUpdate-Thread beendet ist.
 	 */
 	@Override
 	public void ausloesenAnimationFertig(Thread thread)
 	{
-		/*
+		/**
 		 * Ermitteln, ob eine Figur geschlagen werden muss (geschlagen=true)
 		 */
 		for(int i = 0; i < 4; i++)
@@ -603,14 +610,14 @@ public class MainController implements AnimationFertigListener
 				}
 			}
 		}
-		/*
+		/**
 		 * Ermitteln des Spielers, der am Zug ist
 		 */
 		for(int i = 0; i < 4; i++)
 		{
 			if (spieler[i].getIstAmZug() == true)
 			{
-				/*
+				/**
 				 * Testen, ob der Spieler durch diesen Zug gewonnen hat
 				 */
 				int z = 0;
@@ -620,7 +627,7 @@ public class MainController implements AnimationFertigListener
 				}
 				if (z == 4)// Abfrage, ob alle Figuren in den Zielfeldern stehen
 				{
-					/*
+					/**
 					 * Ausgabe eines entsprechenden Hinweises
 					 * Ende des Spiels
 					 */
@@ -639,12 +646,13 @@ public class MainController implements AnimationFertigListener
 			}
 		}
 	}
-	/*
+	/**
 	 * aktualisiert Spielfeld fuer angegebene Figur
+	 * @param f Figur, fuer die das GUI aktualisiert werden soll
 	 */
 	public void aktualisiereGUI(Figur f)
 	{
-		/*
+		/**
 		 * Testen auf eventuelle Aenderungen
 		 * 
 		 * Hinweis:
@@ -653,7 +661,7 @@ public class MainController implements AnimationFertigListener
 		 * Diese Fall sollte aber in der aktuellen Version der Anwendung nicht auftreten.
 		 */
 		if (f.getAlteFigurPosition() != f.getFigurPosition());
-		/*
+		/**
 		 * aktualisieren der JavaFX Circle Elemente fuer Figur f
 		 */
 		{
@@ -662,12 +670,12 @@ public class MainController implements AnimationFertigListener
 				private Paint nextColor;// Zwischenspeicher fuer eine zeitweise ueberschriebene Farbe (Setzen einer Figur "ueber" eine andere)
 				public void doRun()
 				{
-					/*
+					/**
 					 * Testen, ob Figur f geschlagen, d.h. in die Basis zurueckgesetzt wird (relative Figurposition = 0)
 					 */
 					if (f.getFigurPosition() == 0)
 					{
-						/*
+						/**
 						 * Einblenden eines Circles im entsprechenden Startfeld
 						 */
 						if (f.getFigurSpieler() == 1)
@@ -699,12 +707,12 @@ public class MainController implements AnimationFertigListener
 							}
 						}
 					}
-					/*
+					/**
 					 * Testen, ob Figur f aus der Basis auf das erste Feld gesetzt wird (relative Figurposition = 1)
 					 */
 					else if (f.getFigurPosition() == 1)
 					{
-						/*
+						/**
 						 * Ausblenden eines bereits sichtbaren Circles in den Startfeldern
 						 * Einblenden des Circles auf der fuer den Spieler entsprechenden ersten Feldes
 						 */
@@ -745,12 +753,12 @@ public class MainController implements AnimationFertigListener
 							felder[30].setVisible(true);
 						}
 					}
-					/*
+					/**
 					 * normales Setzen der Figur f
 					 */
 					else
 					{
-						/*
+						/**
 						 * Es wird fuer jeden Spieler entsprechend das aktuelle Feld ausgeblendet und das naechste Feld
 						 * auf dem Spielplan sichtbar gemacht. Die Anzahl dieser Schritte ergibt sich aus der Differenz
 						 * von "alteFigurPosition" und "figurPosition". Nach jedem Schritt wartet der Thread 250 ms.
@@ -952,7 +960,7 @@ public class MainController implements AnimationFertigListener
 							}						
 						}
 					}
-					/*
+					/**
 					 * 500ms warten
 					 */
 					try {
