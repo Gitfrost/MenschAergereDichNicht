@@ -33,7 +33,7 @@ public class Main extends Application
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setMaxHeight(700);
 			primaryStage.setMaxWidth(850);
-			primaryStage.setTitle("Mensch aergere dich nicht");
+			primaryStage.setTitle("Mensch Aergere Dich Nicht");
 			primaryStage.setResizable(false);// Da, das GUI bei einer Größenänderung nicht skaliert wird, wird Resizable auf "false" gesetzt.
 			primaryStage.setScene(scene);
 			primaryStage.show();
