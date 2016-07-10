@@ -228,7 +228,7 @@ public class MainController implements AnimationFertigListener
 		Alert alert = new Alert(AlertType.INFORMATION);// Anzeige eines Informationsdialog
 		alert.setTitle("About");
 		alert.setHeaderText("Mensch Aergere Dich Nicht");
-		alert.setContentText("Mensch Aergere Dich Nicht \nVersion 1.0 \n \n Autor: Lucas Johns");
+		alert.setContentText("Mensch Aergere Dich Nicht \nVersion: 1.0 \n \n Autor: Lucas Johns");
 		alert.showAndWait();
 	}
 	/**
